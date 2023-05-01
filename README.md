@@ -4,7 +4,7 @@ Tooling to transform an ontology to the [JSON import datamodel](https://github.c
 ## Give it a try
 * Download the source code
 * Store the source code (uncompressed) in a folder on your local computer or on webhosting
-* Open index.html in an internet browser
+* Open convert.html in an internet browser
 * On this newly opened webpage
   * adjust the metadata in the 'header' to represent the organisation/ontology concerned [optional]
   * select a CSV file containing information on the ontology; adhering to a specific structure (*)
