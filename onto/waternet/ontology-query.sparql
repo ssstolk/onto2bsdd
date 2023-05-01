@@ -1,0 +1,43 @@
+# SPDX-License-Identifier: Apache-2.0
+# Copyright © 2023 Sander Stolk
+
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX bs: <https://w3id.org/def/basicsemantics-owl#>
+PREFIX nen2660: <https://w3id.org/nen2660/def#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+SELECT DISTINCT ?ontoClassPrefLabel ?ontoClassURI ?ontoClassDefinition ?ifcClassLabel ?ifcClassURI ?ontoParentClassPrefLabel ?ontoParentClass ?ontoPropertyURI ?ontoPropertyPrefLabel ?ontoPropertyDatatypeLabel ?ontoPropertyDatatype
+WHERE {
+  ?ontoClassURI skos:prefLabel  ?ontoClassPrefLabel .
+  FILTER (STRSTARTS(STR(?ontoClassURI), "https://otl.waternet.nl/def/")) .
+  ?mapping  skos:prefLabel  ?ontoClassPrefLabel .
+  ?mapping  skos:related    ?ifcClassURI .
+  
+  BIND (STRAFTER(STR(?ifcClassURI), "class/") AS ?ifcClassLabel) .
+  FILTER (BOUND(?ifcClassLabel) && ?ifcClassLabel !="")
+  
+  OPTIONAL {
+    ?ontoClassURI skos:definition ?ontoClassDefinition .
+  }
+  
+  OPTIONAL {
+    ?ontoClassURI rdfs:subClassOf ?ontoParentClass .
+    ?ontoParentClass skos:prefLabel ?ontoParentClassPrefLabel .
+    FILTER (?ontoParentClass != bs:PhysicalObject) .
+  }
+  
+  OPTIONAL {
+    ?shape sh:targetClass ?ontoClassURI .
+    ?shape sh:property ?shapeProperty .
+    ?shapeProperty sh:path ?ontoPropertyURI .
+    ?ontoPropertyURI skos:prefLabel ?ontoPropertyPrefLabel .
+    OPTIONAL {
+      ?shapeProperty sh:datatype ?ontoPropertyDatatype .
+      BIND (STRAFTER(STR(?ontoPropertyDatatype), "#") AS ?ontoPropertyDatatypeLabel) .
+    }
+  }
+}

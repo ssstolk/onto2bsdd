@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<!--
+  SPDX-License-Identifier: Apache-2.0
+  Copyright © 2023 Sander Stolk
+-->
+
+<HTML>
+<HEAD>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+	<script src="js/jquery.csv.js"></script>
+    <script src="js/onto2bsdd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-md5@0.7.3/build/md5.min.js"></script>
+	<link rel="stylesheet" href="css/custom.css" />
+</HEAD>
+
+<BODY>
+<h1>Convert Ontology to bSDD</h1>
+
+<form>
+<label for="bsdd-header">Header for bSDD:</label><br/>
+<textarea id="bsdd-header" rows="11" cols="75">{
+    "OrganizationCode": "waternet",
+    "DomainCode": "otl",
+    "DomainVersion": "0.8",
+    "DomainName": "Waternet OTL",
+    "ReleaseDate": "2023-03-27T16:22:36",
+    "Status": "Preview",
+    "UseOwnUri": true,
+    "DomainNamespaceUri": "https://otl.waternet.nl/",
+    "LanguageIsoCode": "EN"
+}</textarea><br/>
+
+<label for="dropzone-files">CSV file of contents ontology:</label><br/>
+<input class="dropzone" id="dropzone-files" type="file" onchange="loadFile(this.files[0])"/><br/>
+</form><br/>
+
+</BODY>
+
+
+
+
+<script>
+async function loadFile(file) {
+    const header = JSON.parse(document.getElementById("bsdd-header").value);
+	const csvInput = await file.text();
+    const jsonOutput = Onto2bsdd.fromCSV(csvInput, header);
+    console.log(jsonOutput);
+    download(jsonOutput, "application/json", "bsdd-dictionary.json");
+}
+
+function download(content, mimeType, filename){
+  const a = document.createElement('a') // Create "a" element
+  const blob = new Blob([content], {type: mimeType}) // Create a blob (file-like object)
+  const url = URL.createObjectURL(blob) // Create an object URL from blob
+  a.setAttribute('href', url) // Set "a" element link
+  a.setAttribute('download', filename) // Set download filename
+  a.click() // Start downloading
+}
+</script>
+
+</HTML>
+
+
+

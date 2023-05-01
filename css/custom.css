@@ -1,0 +1,22 @@
+/* SPDX-License-Identifier: Apache-2.0
+   Copyright © 2023 Sander Stolk */
+
+form {
+    margin: auto;
+    padding: 0.5em;
+    background-color: lightblue;
+}
+.dropzone {
+    content: "Drop CSV file here";
+    border: 2px dashed #bbb;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    padding: 25px;
+    text-align: center;
+    font: 20pt bold 'Vollkorn';
+    color: #bbb;
+    width: 39em;
+    margin-bottom: 25px;
+    background-color: white;
+}
