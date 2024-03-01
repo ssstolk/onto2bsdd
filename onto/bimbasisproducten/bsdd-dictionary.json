@@ -6,8 +6,10 @@
   "ReleaseDate": "2023-03-27T16:22:36",
   "Status": "Preview",
   "UseOwnUri": true,
-  "DictionaryUri": "http://hub.laces.tech/digitalbuildingdata/ils-o-en-e/production/poc-bsdd-publicatie/",
+  "DictionaryUri": "http://hub.laces.tech/digitalbuildingdata/ils-o-en-e/development/poc-ils-oene-bsdd/",
   "LanguageIsoCode": "nl-NL",
+  "License": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
+  "QualityAssuranceProcedure": "This content is in draft and still under development. Do not use this as final content",
   "ModelVersion": "2.0",
   "Classes": [
     {
@@ -15,73 +17,56 @@
       "Code": "ad759c79-14ba-4fd5-9683-7983acb9c35e",
       "Definition": "",
       "Name": "Breedplaatvloer",
-      "OwnedUri": "http://hub.laces.tech/digitalbuildingdata/ils-o-en-e/production/poc-bsdd-publicatie/ad759c79-14ba-4fd5-9683-7983acb9c35e",
-      "ParentClassificationCode": "6ed19d7b-aa92-4ae5-a610-cb007299fbfe",
-      "RelatedIfcEntityNamesList": [
-        null
-      ],
+      "OwnedUri": "http://hub.laces.tech/digitalbuildingdata/ils-o-en-e/development/poc-ils-oene-bsdd/ad759c79-14ba-4fd5-9683-7983acb9c35e",
+      "Status": "Preview",
       "ClassRelations": [
         {
+          "RelationType": "IsChildOf",
           "RelatedClassUri": "https://digitalbuildingdata.tech/nlsfb/b9d55ec5-2599-3a4b-8fbe-85e6da1337b7",
-          "RelationType": "IsChildOf"
+          "OwnedUri": "http://hub.laces.tech/digitalbuildingdata/ils-o-en-e/development/poc-ils-oene-bsdd/6ed19d7b-aa92-4ae5-a610-cb007299fbfe"
         },
         {
+          "RelationType": "IsChildOf",
           "RelatedClassUri": "https://digitalbuildingdata.tech/nlsfb/98ea9f37-5ab8-3ae9-8932-a900ddb3d8f9",
-          "RelationType": "IsChildOf"
+          "OwnedUri": "http://hub.laces.tech/digitalbuildingdata/ils-o-en-e/development/poc-ils-oene-bsdd/6ed19d7b-aa92-4ae5-a610-cb007299fbfe"
         },
         {
-          "RelatedClassUri": "https://digitalbuildingdata.tech/nlsfb/b9d55ec5-2599-3a4b-8fbe-85e6da1337b7",
-          "RelationType": "IsChildOf"
+          "RelationType": "IsChildOf",
+          "RelatedClassUri": "http://hub.laces.tech/digitalbuildingdata/ils-o-en-e/development/poc-ils-oene-bsdd/6ed19d7b-aa92-4ae5-a610-cb007299fbfe",
+          "OwnedUri": "http://hub.laces.tech/digitalbuildingdata/ils-o-en-e/development/poc-ils-oene-bsdd/6ed19d7b-aa92-4ae5-a610-cb007299fbfe"
         },
         {
-          "RelatedClassUri": "https://digitalbuildingdata.tech/nlsfb/98ea9f37-5ab8-3ae9-8932-a900ddb3d8f9",
-          "RelationType": "IsChildOf"
+          "RelationType": "IsParentOf",
+          "RelatedClassUri": "https://identifier.buildingsmart.org/uri/buildingsmart/ifc-4.3/class/IfcSlabFLOOR",
+          "OwnedUri": "http://hub.laces.tech/digitalbuildingdata/ils-o-en-e/development/poc-ils-oene-bsdd/6ed19d7b-aa92-4ae5-a610-cb007299fbfe"
         },
         {
-          "RelatedClassUri": "https://digitalbuildingdata.tech/nlsfb/b9d55ec5-2599-3a4b-8fbe-85e6da1337b7",
-          "RelationType": "IsChildOf"
-        },
-        {
-          "RelatedClassUri": "https://digitalbuildingdata.tech/nlsfb/98ea9f37-5ab8-3ae9-8932-a900ddb3d8f9",
-          "RelationType": "IsChildOf"
+          "RelationType": "IsParentOf",
+          "RelatedClassUri": "https://identifier.buildingsmart.org/uri/buildingsmart/ifc-4.3/class/IfcSlabROOF",
+          "OwnedUri": "http://hub.laces.tech/digitalbuildingdata/ils-o-en-e/development/poc-ils-oene-bsdd/6ed19d7b-aa92-4ae5-a610-cb007299fbfe"
         }
       ],
       "ClassProperties": [
         {
-          "Code": "647ab9c4f8e5b1f8ca925a378aa000ac",
-          "PropertyCode": "1c3156f6-f68e-4d6f-b947-8500bde9e6a2",
-          "PropertySet": "Basis bouwproducten_hackathon",
-          "PropertyType": "Property"
+          "Code": "f0ee782578b7ee5bde35ce45255b4bfe",
+          "PropertyCode": "e9eadb93-2b12-4726-9c0e-62d030d20399",
+          "PropertySet": "basisbouwproducten_hackathon",
+          "PropertyType": "Property",
+          "OwnedUri": "http://hub.laces.tech/digitalbuildingdata/ils-o-en-e/development/poc-ils-oene-bsdd/e9eadb93-2b12-4726-9c0e-62d030d20399"
         },
         {
           "Code": "647ab9c4f8e5b1f8ca925a378aa000ac",
           "PropertyCode": "1c3156f6-f68e-4d6f-b947-8500bde9e6a2",
-          "PropertySet": "Basis bouwproducten_hackathon",
-          "PropertyType": "Property"
+          "PropertySet": "basisbouwproducten_hackathon",
+          "PropertyType": "Property",
+          "OwnedUri": "http://hub.laces.tech/digitalbuildingdata/ils-o-en-e/development/poc-ils-oene-bsdd/1c3156f6-f68e-4d6f-b947-8500bde9e6a2"
         },
         {
           "Code": "8ff194db9761d3c7f3f5a350f35e656a",
           "PropertyCode": "e10cf3a9-4aa4-494b-9884-c15b0830a223",
-          "PropertySet": "Basis bouwproducten_hackathon",
-          "PropertyType": "Property"
-        },
-        {
-          "Code": "8ff194db9761d3c7f3f5a350f35e656a",
-          "PropertyCode": "e10cf3a9-4aa4-494b-9884-c15b0830a223",
-          "PropertySet": "Basis bouwproducten_hackathon",
-          "PropertyType": "Property"
-        },
-        {
-          "Code": "f0ee782578b7ee5bde35ce45255b4bfe",
-          "PropertyCode": "e9eadb93-2b12-4726-9c0e-62d030d20399",
-          "PropertySet": "Basis bouwproducten_hackathon",
-          "PropertyType": "Property"
-        },
-        {
-          "Code": "f0ee782578b7ee5bde35ce45255b4bfe",
-          "PropertyCode": "e9eadb93-2b12-4726-9c0e-62d030d20399",
-          "PropertySet": "Basis bouwproducten_hackathon",
-          "PropertyType": "Property"
+          "PropertySet": "basisbouwproducten_hackathon",
+          "PropertyType": "Property",
+          "OwnedUri": "http://hub.laces.tech/digitalbuildingdata/ils-o-en-e/development/poc-ils-oene-bsdd/e10cf3a9-4aa4-494b-9884-c15b0830a223"
         }
       ]
     },
@@ -90,125 +75,58 @@
       "Code": "6ed19d7b-aa92-4ae5-a610-cb007299fbfe",
       "Definition": "",
       "Name": "23.2* - Vloeren; Constructief",
-      "OwnedUri": "http://hub.laces.tech/digitalbuildingdata/ils-o-en-e/production/poc-bsdd-publicatie/6ed19d7b-aa92-4ae5-a610-cb007299fbfe",
-      "RelatedIfcEntityNamesList": [
-        null
-      ],
+      "OwnedUri": "http://hub.laces.tech/digitalbuildingdata/ils-o-en-e/development/poc-ils-oene-bsdd/6ed19d7b-aa92-4ae5-a610-cb007299fbfe",
+      "Status": "Preview",
       "ClassRelations": [
         {
-          "RelatedClassUri": "https://identifier.buildingsmart.org/uri/buildingsmart/ifc-4.3/class/IfcSlabROOF",
-          "RelationType": "HasReference"
-        },
-        {
-          "RelatedClassUri": "https://identifier.buildingsmart.org/uri/buildingsmart/ifc-4.3/class/IfcSlabFLOOR",
-          "RelationType": "HasReference"
-        },
-        {
-          "RelatedClassUri": "https://digitalbuildingdata.tech/nlsfb/c8ea5146-3737-31d4-a581-f8f69c4ed4d8",
-          "RelationType": "IsChildOf"
-        },
-        {
-          "RelatedClassUri": "https://identifier.buildingsmart.org/uri/buildingsmart/ifc-4.3/class/IfcSlabROOF",
-          "RelationType": "HasReference"
-        },
-        {
-          "RelatedClassUri": "https://identifier.buildingsmart.org/uri/buildingsmart/ifc-4.3/class/IfcSlabFLOOR",
-          "RelationType": "HasReference"
-        },
-        {
-          "RelatedClassUri": "https://digitalbuildingdata.tech/nlsfb/c8ea5146-3737-31d4-a581-f8f69c4ed4d8",
-          "RelationType": "IsChildOf"
-        },
-        {
-          "RelatedClassUri": "https://identifier.buildingsmart.org/uri/buildingsmart/ifc-4.3/class/IfcSlabROOF",
-          "RelationType": "HasReference"
-        },
-        {
-          "RelatedClassUri": "https://identifier.buildingsmart.org/uri/buildingsmart/ifc-4.3/class/IfcSlabFLOOR",
-          "RelationType": "HasReference"
-        },
-        {
-          "RelatedClassUri": "https://digitalbuildingdata.tech/nlsfb/c8ea5146-3737-31d4-a581-f8f69c4ed4d8",
-          "RelationType": "IsChildOf"
+          "RelationType": "IsParentOf",
+          "RelatedClassUri": "http://hub.laces.tech/digitalbuildingdata/ils-o-en-e/development/poc-ils-oene-bsdd/ad759c79-14ba-4fd5-9683-7983acb9c35e",
+          "OwnedUri": "http://hub.laces.tech/digitalbuildingdata/ils-o-en-e/development/poc-ils-oene-bsdd/ad759c79-14ba-4fd5-9683-7983acb9c35e"
         }
       ],
       "ClassProperties": [
         {
           "Code": "1dd20c18dde58e2831bf40972d2d47e9",
           "PropertyCode": "e10cf3a9-4aa4-494b-9884-c15b0830a223",
-          "PropertySet": "Basis bouwproducten_hackathon",
-          "PropertyType": "Property"
-        },
-        {
-          "Code": "1dd20c18dde58e2831bf40972d2d47e9",
-          "PropertyCode": "e10cf3a9-4aa4-494b-9884-c15b0830a223",
-          "PropertySet": "Basis bouwproducten_hackathon",
-          "PropertyType": "Property"
-        },
-        {
-          "Code": "1dd20c18dde58e2831bf40972d2d47e9",
-          "PropertyCode": "e10cf3a9-4aa4-494b-9884-c15b0830a223",
-          "PropertySet": "Basis bouwproducten_hackathon",
-          "PropertyType": "Property"
-        },
-        {
-          "Code": "1bb9c4446d873947647d2bc23457b3d1",
-          "PropertyCode": "e9eadb93-2b12-4726-9c0e-62d030d20399",
-          "PropertySet": "Basis bouwproducten_hackathon",
-          "PropertyType": "Property"
-        },
-        {
-          "Code": "1bb9c4446d873947647d2bc23457b3d1",
-          "PropertyCode": "e9eadb93-2b12-4726-9c0e-62d030d20399",
-          "PropertySet": "Basis bouwproducten_hackathon",
-          "PropertyType": "Property"
-        },
-        {
-          "Code": "1bb9c4446d873947647d2bc23457b3d1",
-          "PropertyCode": "e9eadb93-2b12-4726-9c0e-62d030d20399",
-          "PropertySet": "Basis bouwproducten_hackathon",
-          "PropertyType": "Property"
+          "PropertySet": "basisbouwproducten_hackathon",
+          "PropertyType": "Property",
+          "OwnedUri": "http://hub.laces.tech/digitalbuildingdata/ils-o-en-e/development/poc-ils-oene-bsdd/e10cf3a9-4aa4-494b-9884-c15b0830a223"
         },
         {
           "Code": "0d4a9ecdb3f90f97496ed52d5a2d25f0",
           "PropertyCode": "1c3156f6-f68e-4d6f-b947-8500bde9e6a2",
-          "PropertySet": "Basis bouwproducten_hackathon",
-          "PropertyType": "Property"
+          "PropertySet": "basisbouwproducten_hackathon",
+          "PropertyType": "Property",
+          "OwnedUri": "http://hub.laces.tech/digitalbuildingdata/ils-o-en-e/development/poc-ils-oene-bsdd/1c3156f6-f68e-4d6f-b947-8500bde9e6a2"
         },
         {
-          "Code": "0d4a9ecdb3f90f97496ed52d5a2d25f0",
-          "PropertyCode": "1c3156f6-f68e-4d6f-b947-8500bde9e6a2",
-          "PropertySet": "Basis bouwproducten_hackathon",
-          "PropertyType": "Property"
-        },
-        {
-          "Code": "0d4a9ecdb3f90f97496ed52d5a2d25f0",
-          "PropertyCode": "1c3156f6-f68e-4d6f-b947-8500bde9e6a2",
-          "PropertySet": "Basis bouwproducten_hackathon",
-          "PropertyType": "Property"
+          "Code": "1bb9c4446d873947647d2bc23457b3d1",
+          "PropertyCode": "e9eadb93-2b12-4726-9c0e-62d030d20399",
+          "PropertySet": "basisbouwproducten_hackathon",
+          "PropertyType": "Property",
+          "OwnedUri": "http://hub.laces.tech/digitalbuildingdata/ils-o-en-e/development/poc-ils-oene-bsdd/e9eadb93-2b12-4726-9c0e-62d030d20399"
         }
       ]
     }
   ],
   "Properties": [
     {
+      "Code": "e9eadb93-2b12-4726-9c0e-62d030d20399",
+      "DataType": "String",
+      "Name": "Bouwlaag",
+      "OwnedUri": "http://hub.laces.tech/digitalbuildingdata/ils-o-en-e/development/poc-ils-oene-bsdd/e9eadb93-2b12-4726-9c0e-62d030d20399"
+    },
+    {
       "Code": "1c3156f6-f68e-4d6f-b947-8500bde9e6a2",
       "DataType": "String",
       "Name": "Massa",
-      "OwnedUri": "http://hub.laces.tech/digitalbuildingdata/ils-o-en-e/production/poc-bsdd-publicatie/1c3156f6-f68e-4d6f-b947-8500bde9e6a2"
+      "OwnedUri": "http://hub.laces.tech/digitalbuildingdata/ils-o-en-e/development/poc-ils-oene-bsdd/1c3156f6-f68e-4d6f-b947-8500bde9e6a2"
     },
     {
       "Code": "e10cf3a9-4aa4-494b-9884-c15b0830a223",
       "DataType": "String",
       "Name": "Brandwerendheid",
-      "OwnedUri": "http://hub.laces.tech/digitalbuildingdata/ils-o-en-e/production/poc-bsdd-publicatie/e10cf3a9-4aa4-494b-9884-c15b0830a223"
-    },
-    {
-      "Code": "e9eadb93-2b12-4726-9c0e-62d030d20399",
-      "DataType": "String",
-      "Name": "Bouwlaag",
-      "OwnedUri": "http://hub.laces.tech/digitalbuildingdata/ils-o-en-e/production/poc-bsdd-publicatie/e9eadb93-2b12-4726-9c0e-62d030d20399"
+      "OwnedUri": "http://hub.laces.tech/digitalbuildingdata/ils-o-en-e/development/poc-ils-oene-bsdd/e10cf3a9-4aa4-494b-9884-c15b0830a223"
     }
-  ],
-  "Materials": []
+  ]
 }

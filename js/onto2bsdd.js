@@ -24,9 +24,10 @@ class Onto2bsdd {
     console.log(JSON.stringify(csvObjects));
 
     const result = JSON.parse(JSON.stringify(header));
+    const dictionaryUri = result.DictionaryUri;
     const resultClassifications = [];
     const resultProperties = [];
-    const resultMaterials = [];
+    // const resultMaterials = [];
 
     for (const csvObject of csvObjects) {
       let resultClassificationObject = Onto2bsdd.getObjectWithProperty(
@@ -45,7 +46,8 @@ class Onto2bsdd {
           ParentClassificationCode: Onto2bsdd.getLocalname(
             csvObject.ontoParentClass
           ),
-          RelatedIfcEntityNamesList: [csvObject.ifcClassLabel],
+          // RelatedIfcEntityNamesList: [csvObject.ifcClassLabel],
+          Status: "Preview",
           ClassRelations: [],
           ClassProperties: [],
         };
@@ -80,9 +82,14 @@ class Onto2bsdd {
             resultClassificationObject.Code + "-" + resultPropertyObject.Code
           ),
           PropertyCode: resultPropertyObject.Code,
-          PropertySet: result.DictionaryName,
+          PropertySet: result.DictionaryCode,
           PropertyType: "Property",
         };
+        if (csvObject.ontoPropertyURI.includes(dictionaryUri)) {
+          resultPropertyLinkObject.OwnedUri = csvObject.ontoPropertyURI;
+        } else {
+          resultPropertyLinkObject.OwnedUri = dictionaryUri + "fake-uri-404";
+        }
         resultClassificationObject.ClassProperties.push(
           resultPropertyLinkObject
         );
@@ -90,28 +97,35 @@ class Onto2bsdd {
 
       if (csvObject.mappedClassURI && csvObject.mappedClassRelation) {
         const resultIfcRelationObject = {
+          RelationType: csvObject.mappedClassRelation,
           RelatedClassUri: csvObject.mappedClassURI,
         };
-        switch (csvObject.mappedClassRelation) {
-          case "isSpecializationOf":
-            resultIfcRelationObject.RelationType = "IsChildOf";
-            break;
-          case "isGeneralizationOf":
-            resultIfcRelationObject.RelationType = "IsParentOf";
-            break;
-          case "isRelatedTo":
-            resultIfcRelationObject.RelationType = "HasReference";
-            break;
-          default:
-            break;
+        if (csvObject.mappedClassURI.includes(dictionaryUri)) {
+          resultIfcRelationObject.OwnedUri = csvObject.mappedClassURI;
+        } else {
+          resultIfcRelationObject.OwnedUri = dictionaryUri + "fake-uri-404";
         }
+
+        // switch (csvObject.mappedClassRelation) {
+        //   case "isSpecializationOf":
+        //     resultIfcRelationObject.RelationType = "IsChildOf";
+        //     break;
+        //   case "isGeneralizationOf":
+        //     resultIfcRelationObject.RelationType = "IsParentOf";
+        //     break;
+        //   case "isRelatedTo":
+        //     resultIfcRelationObject.RelationType = "HasReference";
+        //     break;
+        //   default:
+        //     break;
+        // }
         resultClassificationObject.ClassRelations.push(resultIfcRelationObject);
       }
     }
 
     result.Classes = resultClassifications;
     result.Properties = resultProperties;
-    result.Materials = resultMaterials;
+    // result.Materials = resultMaterials;
 
     Onto2bsdd.pruneInternalReferences(result);
     return JSON.stringify(result, null, 2);
