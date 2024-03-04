@@ -1,16 +1,16 @@
 {
   "OrganizationCode": "waternet",
-  "DomainCode": "otl",
-  "DomainVersion": "0.8",
-  "DomainName": "Waternet OTL",
+  "DictionaryCode": "otl",
+  "DictionaryVersion": "0.8",
+  "DictionaryName": "Waternet OTL",
   "ReleaseDate": "2023-03-27T16:22:36",
   "Status": "Preview",
   "UseOwnUri": true,
-  "DomainNamespaceUri": "https://otl.waternet.nl/",
-  "LanguageIsoCode": "EN",
-  "Classifications": [
+  "DictionaryUri": "https://otl.waternet.nl/",
+  "LanguageIsoCode": "nl-NL",
+  "Classes": [
     {
-      "ClassificationType": "Class",
+      "ClassType": "Class",
       "Code": "6725f800-b852-3060-91e3-70cbf4cc5efd",
       "Definition": "Kabel die bestemd is voor geleiden van elektriciteit, signalen of trekkrachten. (Bron: Waternet)",
       "Name": "kabel",
@@ -18,7 +18,7 @@
       "RelatedIfcEntityNamesList": [
         "IfcBuildingElementProxy"
       ],
-      "ClassificationProperties": [
+      "ClassProperties": [
         {
           "Code": "07317ee09b7b99fc2bf54c01e04eed3a",
           "PropertyCode": "9c126169-1ba4-3531-bf9d-bbb32ed5f430",
@@ -124,7 +124,7 @@
       ]
     },
     {
-      "ClassificationType": "Class",
+      "ClassType": "Class",
       "Code": "4c0866f8-2c6e-31ab-96ad-7ecfaea6d3ca",
       "Definition": "Object wat een constructie moet beschermen tegen beschadiging door aanrijdingen. (Bron: Waternet)",
       "Name": "aanrijdbeveiliging",
@@ -132,7 +132,7 @@
       "RelatedIfcEntityNamesList": [
         "IfcBuildingElementProxy"
       ],
-      "ClassificationProperties": [
+      "ClassProperties": [
         {
           "Code": "21b9bf54d714d87fa438fd2018f0522b",
           "PropertyCode": "e49f2aad-d8bc-3310-98a9-89ea99e8e56c",
@@ -244,7 +244,7 @@
       ]
     },
     {
-      "ClassificationType": "Class",
+      "ClassType": "Class",
       "Code": "1711cf33-cd66-369a-b649-1a19d15333dc",
       "Definition": "Knop of hendel voor het stopzetten van een machine of installatie bij een plotselinge bedreigende situatie. (Bron: Waternet)",
       "Name": "noodstop",
@@ -252,7 +252,7 @@
       "RelatedIfcEntityNamesList": [
         "IfcProtectiveDevice"
       ],
-      "ClassificationProperties": [
+      "ClassProperties": [
         {
           "Code": "2c5ee04203430eb7f70e7eea6099967d",
           "PropertyCode": "9c126169-1ba4-3531-bf9d-bbb32ed5f430",
@@ -376,7 +376,7 @@
       ]
     },
     {
-      "ClassificationType": "Class",
+      "ClassType": "Class",
       "Code": "d5171a51-30f1-33a3-8352-8c85f590d4ae",
       "Definition": "Onderdeel van een beweegbare brug of sluis dat dient als tegenwicht voor het val. (Bron: Waternet)",
       "Name": "contragewicht",
@@ -384,7 +384,7 @@
       "RelatedIfcEntityNamesList": [
         "IfcBearing"
       ],
-      "ClassificationProperties": [
+      "ClassProperties": [
         {
           "Code": "ccbd3a228188dc0400999ecb295041ab",
           "PropertyCode": "e49f2aad-d8bc-3310-98a9-89ea99e8e56c",
@@ -502,7 +502,7 @@
       ]
     },
     {
-      "ClassificationType": "Class",
+      "ClassType": "Class",
       "Code": "c2e99452-3b8f-3353-836d-cfaf17837367",
       "Definition": "Constructieve deel van de sluis, welke de beweegbare waterkering bevat. (Bron: Waternet)",
       "Name": "sluishoofd",
@@ -510,7 +510,7 @@
       "RelatedIfcEntityNamesList": [
         "IfcMarineFacility"
       ],
-      "ClassificationProperties": [
+      "ClassProperties": [
         {
           "Code": "0779116db42805378494d9a8921e6e64",
           "PropertyCode": "09cdff04-e42b-3b70-a23d-c23e7a3658cc",
@@ -628,7 +628,7 @@
       ]
     },
     {
-      "ClassificationType": "Class",
+      "ClassType": "Class",
       "Code": "28edbcb3-8990-3d1b-ae02-f43398e0c4e4",
       "Definition": "Tegen het inwateren aangebrachte afdekking op de bovenkant van houten meerpalen en palen van remmingwerken (Bron: Waternet)",
       "Name": "paalmuts",
@@ -636,7 +636,7 @@
       "RelatedIfcEntityNamesList": [
         "IfcMarineFacility"
       ],
-      "ClassificationProperties": [
+      "ClassProperties": [
         {
           "Code": "db23cd6db5a8f4253da161c5adfb3e7f",
           "PropertyCode": "e49f2aad-d8bc-3310-98a9-89ea99e8e56c",
@@ -754,7 +754,7 @@
       ]
     },
     {
-      "ClassificationType": "Class",
+      "ClassType": "Class",
       "Code": "2c45c996-6aa8-3ee9-aba8-5868ec7a1162",
       "Definition": "Horizontale rand of verhoging die dient als afdichting. (Bron: Waternet)",
       "Name": "drempel",
@@ -762,7 +762,7 @@
       "RelatedIfcEntityNamesList": [
         "IfcAlignment"
       ],
-      "ClassificationProperties": [
+      "ClassProperties": [
         {
           "Code": "755f6bb737b5082feb72d221329d8539",
           "PropertyCode": "9c126169-1ba4-3531-bf9d-bbb32ed5f430",
@@ -880,7 +880,7 @@
       ]
     },
     {
-      "ClassificationType": "Class",
+      "ClassType": "Class",
       "Code": "e12d7316-3c78-3fcb-af66-e549b0a7a22d",
       "Definition": "Element dat tussen toplaagelementen wordt aangebracht om het open-ruimtepercentage te vergroten. (Bron: Waternet)",
       "Name": "afstandhouder",
@@ -888,7 +888,7 @@
       "RelatedIfcEntityNamesList": [
         "IfcMarineFacility"
       ],
-      "ClassificationProperties": [
+      "ClassProperties": [
         {
           "Code": "444c3bdf86facf4736f04aae34ef6d78",
           "PropertyCode": "9c126169-1ba4-3531-bf9d-bbb32ed5f430",
@@ -1006,7 +1006,7 @@
       ]
     },
     {
-      "ClassificationType": "Class",
+      "ClassType": "Class",
       "Code": "590c7447-79f2-3c86-abc2-29da9bb40e73",
       "Definition": "Beeldscherm waarop digitale informatie wordt getoond (Bron: Waternet)",
       "Name": "monitor",
@@ -1014,7 +1014,7 @@
       "RelatedIfcEntityNamesList": [
         "IfcCommunicationsAppliance"
       ],
-      "ClassificationProperties": [
+      "ClassProperties": [
         {
           "Code": "f4528eb84466ebebaa194ee4f574148c",
           "PropertyCode": "e46c97a9-e682-3113-9448-82c3bc586255",
@@ -1126,7 +1126,7 @@
       ]
     },
     {
-      "ClassificationType": "Class",
+      "ClassType": "Class",
       "Code": "00db496f-7115-36f1-8090-b3dcce402a2e",
       "Definition": "In het water staande constructie van in de bodem geplaatste palen of kokers boven water verbonden door gordingen om schepen aan vast te leggen of af te remmen. (Bron: NEN 2767-4)",
       "Name": "meerstoel",
@@ -1134,7 +1134,7 @@
       "RelatedIfcEntityNamesList": [
         "IfcMarineFacility"
       ],
-      "ClassificationProperties": [
+      "ClassProperties": [
         {
           "Code": "7ccdb303602fa62e5e893bba48101ebc",
           "PropertyCode": "de592649-bb0a-3f79-9887-1d5bd9179a5b",
@@ -1252,7 +1252,7 @@
       ]
     },
     {
-      "ClassificationType": "Class",
+      "ClassType": "Class",
       "Code": "26c84140-d4ec-3f35-8905-f9920929f55f",
       "Definition": "Balk met een waterkerende functie die in (schotbalk)sponningen wordt aangebracht, waarmee de overstorthoogte kan worden beïnvloed. (Bron: Waternet)",
       "Name": "schotbalk",
@@ -1260,7 +1260,7 @@
       "RelatedIfcEntityNamesList": [
         "IfcMarineFacility"
       ],
-      "ClassificationProperties": [
+      "ClassProperties": [
         {
           "Code": "ef1c4ccc862fd2d40a7de470399c2a92",
           "PropertyCode": "e46c97a9-e682-3113-9448-82c3bc586255",
@@ -1378,7 +1378,7 @@
       ]
     },
     {
-      "ClassificationType": "Class",
+      "ClassType": "Class",
       "Code": "73ce0dff-44d4-3710-98ca-a44c87b741bb",
       "Definition": "Instrument om een natuurkundige grootheid mee te meten, zoals bijvoorbeeld hoeveelheid, snelheid, druk. (Bron: Waternet)",
       "Name": "meetinstrument",
@@ -1386,7 +1386,7 @@
       "RelatedIfcEntityNamesList": [
         "IfcSensor"
       ],
-      "ClassificationProperties": [
+      "ClassProperties": [
         {
           "Code": "cdf9a1241cb61b15eac7142c00d5ce05",
           "PropertyCode": "738a0038-d795-3bee-85e5-0e1a80407195",
@@ -1564,7 +1564,7 @@
       ]
     },
     {
-      "ClassificationType": "Class",
+      "ClassType": "Class",
       "Code": "5a984ed2-bb7c-3c73-9ef6-7070b549379c",
       "Definition": "Component dat er voor zorgt dat een machine of machineonderdeel in beweging wordt gebracht. (Bron: Waternet)",
       "Name": "aandrijving",
@@ -1572,7 +1572,7 @@
       "RelatedIfcEntityNamesList": [
         "IfcElectricGenerator"
       ],
-      "ClassificationProperties": [
+      "ClassProperties": [
         {
           "Code": "835316995026882b108d540152392ae4",
           "PropertyCode": "22fe1771-d3c3-3958-873b-e21f8b719b2b",
@@ -1720,7 +1720,7 @@
       ]
     },
     {
-      "ClassificationType": "Class",
+      "ClassType": "Class",
       "Code": "66eb0bfa-602f-3375-ba9e-e0f9d01c91cf",
       "Definition": "Groef in een constructie waarin de hefschuif op afroep kan bewegen. (Bron: Waternet)",
       "Name": "hefschuifsponning",
@@ -1728,7 +1728,7 @@
       "RelatedIfcEntityNamesList": [
         "IfcBuiltElement"
       ],
-      "ClassificationProperties": [
+      "ClassProperties": [
         {
           "Code": "a0e06ce712ed647048f876d7451af180",
           "PropertyCode": "93810768-8d50-31f0-b9f5-4448f9b2e10c",
@@ -1870,7 +1870,7 @@
       ]
     },
     {
-      "ClassificationType": "Class",
+      "ClassType": "Class",
       "Code": "396a5c75-7e48-3d0d-97c1-30c9b7932055",
       "Definition": "Verhoogd platform dat bereikbaar is via een trap of ladder. (Bron: Waternet)",
       "Name": "bordesconstructie",
@@ -1878,7 +1878,7 @@
       "RelatedIfcEntityNamesList": [
         "IfcSlab"
       ],
-      "ClassificationProperties": [
+      "ClassProperties": [
         {
           "Code": "d82f6f17bdcdd12bfa4881956cabea9f",
           "PropertyCode": "e46c97a9-e682-3113-9448-82c3bc586255",
@@ -1990,7 +1990,7 @@
       ]
     },
     {
-      "ClassificationType": "Class",
+      "ClassType": "Class",
       "Code": "521942da-226d-3562-93e2-474c04a25e4c",
       "Definition": "Toren terzijde van een doorvaartopening, voor het heffen van een sluisdeur, brugdek of schuif (Bron: NEN 2767-4)",
       "Name": "heftoren",
@@ -1998,7 +1998,7 @@
       "RelatedIfcEntityNamesList": [
         "IfcTransportElement"
       ],
-      "ClassificationProperties": [
+      "ClassProperties": [
         {
           "Code": "59e23677be21b9a4ee0bd7138a98382e",
           "PropertyCode": "ec243e6c-a155-3d6c-be4e-eb423826ef1e",
@@ -2116,7 +2116,7 @@
       ]
     },
     {
-      "ClassificationType": "Class",
+      "ClassType": "Class",
       "Code": "638fa40b-fd23-3c18-8db5-c750f06f9b1d",
       "Definition": "Object dat is gemaakt door een kunstenaar zijnde beeldende kunst. (Bron: NEN 2767-4)",
       "Name": "kunstobject",
@@ -2124,7 +2124,7 @@
       "RelatedIfcEntityNamesList": [
         "IfcBuildingElementProxy"
       ],
-      "ClassificationProperties": [
+      "ClassProperties": [
         {
           "Code": "9508c5e5a4b42254e1addc8f2279a5d6",
           "PropertyCode": "9c126169-1ba4-3531-bf9d-bbb32ed5f430",
@@ -2140,7 +2140,7 @@
       ]
     },
     {
-      "ClassificationType": "Class",
+      "ClassType": "Class",
       "Code": "0e0d92fc-1f8b-3fc5-bfb8-c078490bfd95",
       "Definition": "Beveiliging die in het geval van overspanningen in werking treed, zodat schade aan de overige installatiedelen wordt voorkomen. (Bron: RWS)",
       "Name": "overspanningsbeveiliging",
@@ -2148,7 +2148,7 @@
       "RelatedIfcEntityNamesList": [
         "IfcProtectiveDevice"
       ],
-      "ClassificationProperties": [
+      "ClassProperties": [
         {
           "Code": "2e9f662236ec75146aeb1815a699e6ff",
           "PropertyCode": "af6f3ba1-796d-3359-b326-660df67996b7",
@@ -2266,7 +2266,7 @@
       ]
     },
     {
-      "ClassificationType": "Class",
+      "ClassType": "Class",
       "Code": "7e281921-1390-37e6-8516-e0bc9299f111",
       "Definition": "Verwerkingseenheid, die op basis van de informatie op zijn ingangen, zijn uitgangen aanstuurt, bedoeld om machines en installaties aan te sturen. (Bron: NEN 2767-4)",
       "Name": "programmable logic controller",
@@ -2274,7 +2274,7 @@
       "RelatedIfcEntityNamesList": [
         "IfcJunctionBox"
       ],
-      "ClassificationProperties": [
+      "ClassProperties": [
         {
           "Code": "6e0f60b96e81663fd49969b925454717",
           "PropertyCode": "9a4bdddb-3272-343e-86cc-a4428348c567",
@@ -2392,7 +2392,7 @@
       ]
     },
     {
-      "ClassificationType": "Class",
+      "ClassType": "Class",
       "Code": "5f8de8d4-62ff-3ac3-b256-ae0b1869c46f",
       "Definition": "Schuine zijde van een grondlichaam. (Bron: NEN 2767-4)",
       "Name": "talud",
@@ -2400,7 +2400,7 @@
       "RelatedIfcEntityNamesList": [
         "IfcPavement"
       ],
-      "ClassificationProperties": [
+      "ClassProperties": [
         {
           "Code": "f4ace8c9f106e4a2717e4c1846e9292d",
           "PropertyCode": "7e235565-64ef-3a15-9d35-0fbf7b9aa3b4",
@@ -2506,7 +2506,7 @@
       ]
     },
     {
-      "ClassificationType": "Class",
+      "ClassType": "Class",
       "Code": "d38bc604-635e-361a-9459-32ec4fb4442d",
       "Definition": "Installatiedeel om een elektrische stroomketen te sluiten of te onderbreken. (Bron: NEN 2767-4)",
       "Name": "schakelaar",
@@ -2514,7 +2514,7 @@
       "RelatedIfcEntityNamesList": [
         "IfcSwitchingDevice"
       ],
-      "ClassificationProperties": [
+      "ClassProperties": [
         {
           "Code": "8d5a4f32d1c4679c755f0c30acf07693",
           "PropertyCode": "22fe1771-d3c3-3958-873b-e21f8b719b2b",
@@ -2656,7 +2656,7 @@
       ]
     },
     {
-      "ClassificationType": "Class",
+      "ClassType": "Class",
       "Code": "719ca6a5-e6c5-3b9a-9677-bcdbed8f97c0",
       "Definition": "Constructie langs of nabij een vaarweg, aansluitend aan een kunstwerk, bedoeld voor het geven van geleiding van schepen (Bron: Waternet)",
       "Name": "remmingwerk",
@@ -2664,7 +2664,7 @@
       "RelatedIfcEntityNamesList": [
         "IfcMarineFacility"
       ],
-      "ClassificationProperties": [
+      "ClassProperties": [
         {
           "Code": "6f708a8370f49b2f38d35fbfaabdf9ea",
           "PropertyCode": "ec243e6c-a155-3d6c-be4e-eb423826ef1e",
@@ -2788,7 +2788,7 @@
       ]
     },
     {
-      "ClassificationType": "Class",
+      "ClassType": "Class",
       "Code": "2389882f-f57a-3580-a0ae-e495771ce590",
       "Definition": "Geheel van de aanplant in een gebied waar ook onderhoud op wordt gepleegd. (Bron: Wikipedia)",
       "Name": "groenvoorziening",
@@ -2796,7 +2796,7 @@
       "RelatedIfcEntityNamesList": [
         "IfcGeographicElement"
       ],
-      "ClassificationProperties": [
+      "ClassProperties": [
         {
           "Code": "49b79d7b1ae470f8a8a51aa76a600a34",
           "PropertyCode": "e46c97a9-e682-3113-9448-82c3bc586255",
@@ -2848,7 +2848,7 @@
       ]
     },
     {
-      "ClassificationType": "Class",
+      "ClassType": "Class",
       "Code": "68eb9a6a-5535-3ab3-9ea8-75c308b105af",
       "Definition": "Installatie voor het afnemen en gebruiken van elektrische energie onder de 1000 Volt (wisselspanning) of 1500 Volt (gelijkspanning). (Bron: NEN 2767-4)",
       "Name": "laagspanningsinstallatie",
@@ -2856,7 +2856,7 @@
       "RelatedIfcEntityNamesList": [
         "IfcDistributionSystem"
       ],
-      "ClassificationProperties": [
+      "ClassProperties": [
         {
           "Code": "aa94c97bfdffb2d34da63cf1fa9b9900",
           "PropertyCode": "9c126169-1ba4-3531-bf9d-bbb32ed5f430",
@@ -2968,7 +2968,7 @@
       ]
     },
     {
-      "ClassificationType": "Class",
+      "ClassType": "Class",
       "Code": "c8ce897d-106d-3742-a065-c99a409758e4",
       "Definition": "Geheel van hard- en software in een installatie dat verantwoordelijk is voor al het functionele gedrag, aansturing van actuatoren en sensoren en communicatie met externe systemen. (Bron: Waternet)",
       "Name": "computer",
@@ -2976,7 +2976,7 @@
       "RelatedIfcEntityNamesList": [
         "IfcCommunicationsAppliance"
       ],
-      "ClassificationProperties": [
+      "ClassProperties": [
         {
           "Code": "d0dfb3a30366116e5194846764faaa81",
           "PropertyCode": "163a7510-4e37-3da9-a7e7-aeb610b2f9a6",
@@ -3088,7 +3088,7 @@
       ]
     },
     {
-      "ClassificationType": "Class",
+      "ClassType": "Class",
       "Code": "f319b22c-6eff-3333-bf4f-123b2a79c8ce",
       "Definition": "Samenstel van automatiseringsystemen en bedieningsorganen waarmee installaties worden bewaakt, bediend en bestuurd. (Bron: NEN 2767-4)",
       "Name": "bedienings- en besturingsinstallatie",
@@ -3096,7 +3096,7 @@
       "RelatedIfcEntityNamesList": [
         "IfcDistributionSystem"
       ],
-      "ClassificationProperties": [
+      "ClassProperties": [
         {
           "Code": "05712231deaf64a391153b40be49e802",
           "PropertyCode": "e46c97a9-e682-3113-9448-82c3bc586255",
@@ -3208,7 +3208,7 @@
       ]
     },
     {
-      "ClassificationType": "Class",
+      "ClassType": "Class",
       "Code": "3137c294-867c-3d78-a519-8de73eda8591",
       "Definition": "Geleidend deel dat in de grond kan liggen of in een bepaald geleidend medium, bijvoorbeeld beton of cokes, en dat in elektrisch contact staat met de aarde. (Bron: NEN-IEC 60050-826:2004, IEV 826-13-05)",
       "Name": "aardelektrode",
@@ -3216,7 +3216,7 @@
       "RelatedIfcEntityNamesList": [
         "IfcFlowController"
       ],
-      "ClassificationProperties": [
+      "ClassProperties": [
         {
           "Code": "ba8f6556239ff397b406f0590a03950c",
           "PropertyCode": "ec243e6c-a155-3d6c-be4e-eb423826ef1e",
@@ -3334,7 +3334,7 @@
       ]
     },
     {
-      "ClassificationType": "Class",
+      "ClassType": "Class",
       "Code": "aced9bbe-0940-3cd2-950e-0cd0ffbcaa04",
       "Definition": "Installatie bestemd voor het distribueren van gas in een gebouw (Bron: Waternet)",
       "Name": "gasinstallatie",
@@ -3342,7 +3342,7 @@
       "RelatedIfcEntityNamesList": [
         "IfcDistributionSystem"
       ],
-      "ClassificationProperties": [
+      "ClassProperties": [
         {
           "Code": "d294b00230645168211224a12c1f6038",
           "PropertyCode": "3339f0d0-0961-362b-a458-b5aa2abda2ca",
@@ -3448,7 +3448,7 @@
       ]
     },
     {
-      "ClassificationType": "Class",
+      "ClassType": "Class",
       "Code": "c92eead0-1753-35eb-a364-0688b423f286",
       "Definition": "Installatie die dient om een terrein te verlichten. (Bron: Waternet)",
       "Name": "terreinverlichtingsinstallatie",
@@ -3456,7 +3456,7 @@
       "RelatedIfcEntityNamesList": [
         "IfcSpatialZone"
       ],
-      "ClassificationProperties": [
+      "ClassProperties": [
         {
           "Code": "30623420018f48c78c95d457d4f30ae0",
           "PropertyCode": "22fe1771-d3c3-3958-873b-e21f8b719b2b",
@@ -3568,7 +3568,7 @@
       ]
     },
     {
-      "ClassificationType": "Class",
+      "ClassType": "Class",
       "Code": "e7fd3cf0-d3f6-3bb2-90d5-4cabc5dfa86d",
       "Definition": "Bouwdeel waarmee een opening in een wand kan worden afgesloten of geopend voor personen of voertuigen. (Bron: Waternet)",
       "Name": "deur",
@@ -3576,7 +3576,7 @@
       "RelatedIfcEntityNamesList": [
         "IfcDoor"
       ],
-      "ClassificationProperties": [
+      "ClassProperties": [
         {
           "Code": "71578ee8a00005f6d61ff80c85febf3e",
           "PropertyCode": "d55833c7-14c5-322e-8f6a-e8b5904d3e17",
@@ -3700,7 +3700,7 @@
       ]
     },
     {
-      "ClassificationType": "Class",
+      "ClassType": "Class",
       "Code": "576cbac8-3b48-370c-862e-2b3f4c5831c0",
       "Definition": "Meestal lineaire constructie bedoeld als een obstakel om twee gebieden van elkaar te scheiden. (Bron: NEN 2767-4)",
       "Name": "afscheiding",
@@ -3708,7 +3708,7 @@
       "RelatedIfcEntityNamesList": [
         "IfcBuildingElementProxy"
       ],
-      "ClassificationProperties": [
+      "ClassProperties": [
         {
           "Code": "c495edeabcae4021c36e9d1fc1fad57f",
           "PropertyCode": "34264104-97f8-3956-bcf0-f2bc74448034",
@@ -3814,7 +3814,7 @@
       ]
     },
     {
-      "ClassificationType": "Class",
+      "ClassType": "Class",
       "Code": "6be9ba21-742e-3f51-8cb9-0ed7435fa75b",
       "Definition": "Eerste verdeler waar elektrotechnische voeding vanuit het net binnenkomt, en van waar het verdeeld wordt over verdere groepen (bron: Waternet)",
       "Name": "onderverdeler",
@@ -3822,7 +3822,7 @@
       "RelatedIfcEntityNamesList": [
         "IfcBuildingElementProxy"
       ],
-      "ClassificationProperties": [
+      "ClassProperties": [
         {
           "Code": "96787b747a6a610a0ee500b40635148d",
           "PropertyCode": "7e235565-64ef-3a15-9d35-0fbf7b9aa3b4",
@@ -3934,7 +3934,7 @@
       ]
     },
     {
-      "ClassificationType": "Class",
+      "ClassType": "Class",
       "Code": "a1cf5f37-20ea-3231-acf9-2f0bb95d238e",
       "Definition": "Installatiedeel om overdracht van gegevens te realiseren. (Bron: Waternet)",
       "Name": "communicatie unit",
@@ -3942,7 +3942,7 @@
       "RelatedIfcEntityNamesList": [
         "IfcCommunicationsAppliance"
       ],
-      "ClassificationProperties": [
+      "ClassProperties": [
         {
           "Code": "7200e312955fa3021cbedf99bd37d8c5",
           "PropertyCode": "de592649-bb0a-3f79-9887-1d5bd9179a5b",
@@ -4060,7 +4060,7 @@
       ]
     },
     {
-      "ClassificationType": "Class",
+      "ClassType": "Class",
       "Code": "5ddb5d39-6d1f-3246-a5ee-1d0944af13a3",
       "Definition": "Groef in een constructie waarin een contragewicht op afroep kan bewegen. (Bron: Waternet)",
       "Name": "contragewichtsponning",
@@ -4068,7 +4068,7 @@
       "RelatedIfcEntityNamesList": [
         "IfcBearing"
       ],
-      "ClassificationProperties": [
+      "ClassProperties": [
         {
           "Code": "bc2664a94ae3b4e016fe3c42de80288a",
           "PropertyCode": "3339f0d0-0961-362b-a458-b5aa2abda2ca",
@@ -4210,7 +4210,7 @@
       ]
     },
     {
-      "ClassificationType": "Class",
+      "ClassType": "Class",
       "Code": "a33ae94a-269e-3663-a844-3a7effb06d90",
       "Definition": "Bord dat algemene, bewegwijzering en overige informatie verschaft. (Bron: NEN 2767-4)",
       "Name": "informatiebord",
@@ -4218,7 +4218,7 @@
       "RelatedIfcEntityNamesList": [
         "IfcNavigationElement"
       ],
-      "ClassificationProperties": [
+      "ClassProperties": [
         {
           "Code": "de39d20ff432cfc0826a4360b632ebaa",
           "PropertyCode": "23d25588-5235-3943-a10a-a120039ca7e8",
@@ -4264,7 +4264,7 @@
       ]
     },
     {
-      "ClassificationType": "Class",
+      "ClassType": "Class",
       "Code": "41ff8f6f-b0a8-3be7-b58b-742af63642c1",
       "Definition": "Balk bevestigd aan bijvoorbeeld het steunpunt van een brug, de wand en het hoofd van een sluis ter bescherming van de constructie tegen aanvaringen. (Bron: Waternet)",
       "Name": "wrijfdeel",
@@ -4272,7 +4272,7 @@
       "RelatedIfcEntityNamesList": [
         "IfcMarineFacility"
       ],
-      "ClassificationProperties": [
+      "ClassProperties": [
         {
           "Code": "5a681c952f70c5568562d2d24275ff0f",
           "PropertyCode": "3339f0d0-0961-362b-a458-b5aa2abda2ca",
@@ -4390,7 +4390,7 @@
       ]
     },
     {
-      "ClassificationType": "Class",
+      "ClassType": "Class",
       "Code": "a089e0f2-9a39-33b3-ae0b-10beaa16ef11",
       "Definition": "Paneel waarmee een bedienaar een installatie (lokaal) kan bedienen. (Bron: NEN 2767-4)",
       "Name": "bedienpaneel",
@@ -4398,7 +4398,7 @@
       "RelatedIfcEntityNamesList": [
         "IfcCommunicationsAppliance"
       ],
-      "ClassificationProperties": [
+      "ClassProperties": [
         {
           "Code": "34a9bce38e5832137781b540d8357304",
           "PropertyCode": "7e235565-64ef-3a15-9d35-0fbf7b9aa3b4",
@@ -4522,7 +4522,7 @@
       ]
     },
     {
-      "ClassificationType": "Class",
+      "ClassType": "Class",
       "Code": "bcbbe7f8-7beb-3f45-8a35-805c4e6b5a5b",
       "Definition": "Het geheel aan objecten bedoeld om schotbalken (tijdelijk) op te slaan (Bron: Waternet)",
       "Name": "schotbalkenopslag",
@@ -4530,7 +4530,7 @@
       "RelatedIfcEntityNamesList": [
         "IfcMarineFacility"
       ],
-      "ClassificationProperties": [
+      "ClassProperties": [
         {
           "Code": "4d22827eceb3207516fb6e02ef8b2a0d",
           "PropertyCode": "ec243e6c-a155-3d6c-be4e-eb423826ef1e",
@@ -4648,7 +4648,7 @@
       ]
     },
     {
-      "ClassificationType": "Class",
+      "ClassType": "Class",
       "Code": "68035998-dfbb-3839-b8f6-eec78850fd9f",
       "Definition": "Constructie aangebracht op een muur of wand die steun biedt en beschermt tegen vallen bij hoogteverschil. (Bron: NEN 2767-4)",
       "Name": "leuning",
@@ -4656,7 +4656,7 @@
       "RelatedIfcEntityNamesList": [
         "IfcRailing"
       ],
-      "ClassificationProperties": [
+      "ClassProperties": [
         {
           "Code": "50175f170974dd3f6f533c2e22157e45",
           "PropertyCode": "4f4811e9-277e-3c0f-94f7-427da6d9f3cd",
@@ -4768,7 +4768,7 @@
       ]
     },
     {
-      "ClassificationType": "Class",
+      "ClassType": "Class",
       "Code": "14d95718-2f40-34ff-907b-74d958b69d27",
       "Definition": "Constructie bestaande uit een of meerdere lagen, om het terrein goed begaanbaar te houden voor mensen en voertuigen. (Bron: Waternet)",
       "Name": "verharding",
@@ -4776,7 +4776,7 @@
       "RelatedIfcEntityNamesList": [
         "IfcPavement"
       ],
-      "ClassificationProperties": [
+      "ClassProperties": [
         {
           "Code": "1f7270a44b1ba2fd934e03e5ab09783f",
           "PropertyCode": "09cdff04-e42b-3b70-a23d-c23e7a3658cc",
@@ -4900,7 +4900,7 @@
       ]
     },
     {
-      "ClassificationType": "Class",
+      "ClassType": "Class",
       "Code": "1a5cd876-f12f-3482-84d3-b9b7ee9b3f46",
       "Definition": "Schuif die in een waterkering wordt geplaatst middels een hefmechanisme zodat gebieden van elkaar gescheiden kunnen worden (Bron: NEN 2767-4)",
       "Name": "hefschuif",
@@ -4908,7 +4908,7 @@
       "RelatedIfcEntityNamesList": [
         "IfcBearing"
       ],
-      "ClassificationProperties": [
+      "ClassProperties": [
         {
           "Code": "fbbcc8f64566f7f1cf5db1aa8e1ec3ed",
           "PropertyCode": "9c126169-1ba4-3531-bf9d-bbb32ed5f430",
@@ -5026,7 +5026,7 @@
       ]
     },
     {
-      "ClassificationType": "Class",
+      "ClassType": "Class",
       "Code": "ed756aa6-4d7a-3e18-ab7c-9e62cf8245f6",
       "Definition": "Statisch installatiedeel dat spanning van hoge naar lagere waarden transformeert en omgekeerd. (Bron: Waternet)",
       "Name": "transformator",
@@ -5034,7 +5034,7 @@
       "RelatedIfcEntityNamesList": [
         "IfcTransformer"
       ],
-      "ClassificationProperties": [
+      "ClassProperties": [
         {
           "Code": "ec0bdf65a5be7f4a0cae3d598ba5a60e",
           "PropertyCode": "4f4811e9-277e-3c0f-94f7-427da6d9f3cd",
@@ -5146,7 +5146,7 @@
       ]
     },
     {
-      "ClassificationType": "Class",
+      "ClassType": "Class",
       "Code": "ae32c6c8-5816-357d-ab9e-3e8d91288015",
       "Definition": "Installatiedeel waarmee een elektrische verbruiker wordt in- en afgeschakeld. (Bron: Waternet)",
       "Name": "aanzetinrichting",
@@ -5154,7 +5154,7 @@
       "RelatedIfcEntityNamesList": [
         "IfcCommunicationsAppliance"
       ],
-      "ClassificationProperties": [
+      "ClassProperties": [
         {
           "Code": "d597807869ad3a51b83b0d87dbc77d29",
           "PropertyCode": "9c126169-1ba4-3531-bf9d-bbb32ed5f430",
@@ -5278,7 +5278,7 @@
       ]
     },
     {
-      "ClassificationType": "Class",
+      "ClassType": "Class",
       "Code": "df08441e-2ce0-375d-ac82-25d0f78a4eb2",
       "Definition": "Wiel dat beweegt, al dan niet in een geleiderails, om zoveel mogelijk frictie en wrijving te voorkomen bij beweging van een object. (Bron: Waternet)",
       "Name": "geleidewiel",
@@ -5286,7 +5286,7 @@
       "RelatedIfcEntityNamesList": [
         "IfcBearing"
       ],
-      "ClassificationProperties": [
+      "ClassProperties": [
         {
           "Code": "ed4e03483e290920dbf49e3c3f69b903",
           "PropertyCode": "e49f2aad-d8bc-3310-98a9-89ea99e8e56c",
@@ -5404,7 +5404,7 @@
       ]
     },
     {
-      "ClassificationType": "Class",
+      "ClassType": "Class",
       "Code": "e3f98a9b-cf8c-343c-99ce-bdd7e77c8df0",
       "Definition": "Installatie, in verharding (maar niet in rijbaan) of als rails aangebracht, voor het wegen van auto's, goederenwagons of andere objecten. (Bron: Waternet)",
       "Name": "weeginstallatie",
@@ -5412,7 +5412,7 @@
       "RelatedIfcEntityNamesList": [
         "IfcBuildingElementProxy"
       ],
-      "ClassificationProperties": [
+      "ClassProperties": [
         {
           "Code": "264fded44e09abfac630fdfd4e6a85b3",
           "PropertyCode": "34264104-97f8-3956-bcf0-f2bc74448034",
@@ -5518,7 +5518,7 @@
       ]
     },
     {
-      "ClassificationType": "Class",
+      "ClassType": "Class",
       "Code": "d995fde6-0a23-3814-94a5-1dc857e92ef2",
       "Definition": "Armatuur met één of meerdere lichtbronnen die de verkeerstromen van de scheepvaart doormiddel van lichtsignalen reguleert. (Bron: Waternet)",
       "Name": "scheepvaartsein",
@@ -5526,7 +5526,7 @@
       "RelatedIfcEntityNamesList": [
         "IfcMarineFacility"
       ],
-      "ClassificationProperties": [
+      "ClassProperties": [
         {
           "Code": "064365a19541d135d8aabecda0d6cab2",
           "PropertyCode": "9c126169-1ba4-3531-bf9d-bbb32ed5f430",
@@ -5542,7 +5542,7 @@
       ]
     },
     {
-      "ClassificationType": "Class",
+      "ClassType": "Class",
       "Code": "14e450d5-908e-3761-ac1d-c4b52659db4c",
       "Definition": "Staaf of richel die met de constructie is verbonden en waarover wielen lopen om een object te geleiden. (Bron: Waternet)",
       "Name": "geleiderail",
@@ -5550,7 +5550,7 @@
       "RelatedIfcEntityNamesList": [
         "IfcBearing"
       ],
-      "ClassificationProperties": [
+      "ClassProperties": [
         {
           "Code": "1369e4c87e75962bc1fa448ca93fe5d5",
           "PropertyCode": "09cdff04-e42b-3b70-a23d-c23e7a3658cc",
@@ -5668,7 +5668,7 @@
       ]
     },
     {
-      "ClassificationType": "Class",
+      "ClassType": "Class",
       "Code": "984a8187-0df3-37b7-98bc-eb03a6240504",
       "Definition": "Voorziening die tot doel heeft om elektriciteit voor de betreffende installatie op te wekken, die automatisch in werking treedt zodra de netspanning uitvalt of wordt onderbroken (bron: Waternet)",
       "Name": "uninterruptible power supply",
@@ -5676,7 +5676,7 @@
       "RelatedIfcEntityNamesList": [
         "IfcEngine"
       ],
-      "ClassificationProperties": [
+      "ClassProperties": [
         {
           "Code": "c3368608db1fc4d442be647469cc7c21",
           "PropertyCode": "4f4811e9-277e-3c0f-94f7-427da6d9f3cd",
@@ -5788,7 +5788,7 @@
       ]
     },
     {
-      "ClassificationType": "Class",
+      "ClassType": "Class",
       "Code": "f0ad3fd9-ef3f-37d0-a215-9c4b863d6ecb",
       "Definition": "Installatie waarmee een bepaald gebied van een afstand visueel kan worden geobserveerd en opgeslagen. (Bron: NEN 2767-4)",
       "Name": "closed-circuit television installatie",
@@ -5796,7 +5796,7 @@
       "RelatedIfcEntityNamesList": [
         "IfcAudioVisualAppliance"
       ],
-      "ClassificationProperties": [
+      "ClassProperties": [
         {
           "Code": "f8e640a73e12a4db63ab167326811b63",
           "PropertyCode": "163a7510-4e37-3da9-a7e7-aeb610b2f9a6",
@@ -5902,7 +5902,7 @@
       ]
     },
     {
-      "ClassificationType": "Class",
+      "ClassType": "Class",
       "Code": "b7e5f7f0-eb66-3adf-a65a-7bb93e1b2e42",
       "Definition": "Verticale constructie die kan dienen als drager. (Bron: NEN 2767-4)",
       "Name": "kolom",
@@ -5910,7 +5910,7 @@
       "RelatedIfcEntityNamesList": [
         "IfcColumn"
       ],
-      "ClassificationProperties": [
+      "ClassProperties": [
         {
           "Code": "02f134468e4a99a4b430c138f097ae50",
           "PropertyCode": "de592649-bb0a-3f79-9887-1d5bd9179a5b",
@@ -6022,7 +6022,7 @@
       ]
     },
     {
-      "ClassificationType": "Class",
+      "ClassType": "Class",
       "Code": "5f89c563-5105-37fd-ad4c-276d26ca628b",
       "Definition": "Verticale constructiedelen die in een opeenvolgende rij de grond worden gedreven, meestal om weerstand te bieden tegen zijkrachten. (Bron: Aquo)",
       "Name": "damwand",
@@ -6030,7 +6030,7 @@
       "RelatedIfcEntityNamesList": [
         "IfcDeepFoundation"
       ],
-      "ClassificationProperties": [
+      "ClassProperties": [
         {
           "Code": "1426d10f91e00d72839bdf6645d8b7b8",
           "PropertyCode": "d55833c7-14c5-322e-8f6a-e8b5904d3e17",
@@ -6148,7 +6148,7 @@
       ]
     },
     {
-      "ClassificationType": "Class",
+      "ClassType": "Class",
       "Code": "9cb7b372-190f-3f22-a460-43e1e06aa990",
       "Definition": "Uitwendige scheidingsconstructie met een overwegend horizontaal karakter. (Bron: NEN 2767-4)",
       "Name": "dak",
@@ -6156,7 +6156,7 @@
       "RelatedIfcEntityNamesList": [
         "IfcRoof"
       ],
-      "ClassificationProperties": [
+      "ClassProperties": [
         {
           "Code": "4a39bb10d0b3b96cc507d500d793c924",
           "PropertyCode": "22fe1771-d3c3-3958-873b-e21f8b719b2b",
@@ -6280,7 +6280,7 @@
       ]
     },
     {
-      "ClassificationType": "Class",
+      "ClassType": "Class",
       "Code": "214d8e08-bc59-355a-acd1-373bf915e7cf",
       "Definition": "Rail die deel uitmaakt van een aardingsinstallatie ten behoeve van potentiaal vereffening. (Bron: NEN 2767-4)",
       "Name": "aardrail",
@@ -6288,7 +6288,7 @@
       "RelatedIfcEntityNamesList": [
         "IfcFlowController"
       ],
-      "ClassificationProperties": [
+      "ClassProperties": [
         {
           "Code": "2b53efdf0c4330a7cb662eb3dce92263",
           "PropertyCode": "9a4bdddb-3272-343e-86cc-a4428348c567",
@@ -6400,7 +6400,7 @@
       ]
     },
     {
-      "ClassificationType": "Class",
+      "ClassType": "Class",
       "Code": "118353bf-baca-3855-aa41-c5f948682ca2",
       "Definition": "Groef in een constructie waarin een schotbalk geplaatst wordt. (Bron: Waternet)",
       "Name": "schotbalksponning",
@@ -6408,7 +6408,7 @@
       "RelatedIfcEntityNamesList": [
         "IfcBuiltElement"
       ],
-      "ClassificationProperties": [
+      "ClassProperties": [
         {
           "Code": "c16e7345dc3959a32ec60ac911b1bf3a",
           "PropertyCode": "e46c97a9-e682-3113-9448-82c3bc586255",
@@ -6550,7 +6550,7 @@
       ]
     },
     {
-      "ClassificationType": "Class",
+      "ClassType": "Class",
       "Code": "c586a28a-ea8a-34f2-9f8f-650635ec4cb2",
       "Definition": "Beweegbaar kunstwerk, deel uitmakend van een waterkering, waardoor water kan worden afgelaten op het buitenwater (Bron: Aquo)",
       "Name": "keersluis",
@@ -6558,7 +6558,7 @@
       "RelatedIfcEntityNamesList": [
         "IfcBuildingElementProxy"
       ],
-      "ClassificationProperties": [
+      "ClassProperties": [
         {
           "Code": "b89332c349ad6848f80a9edc35958250",
           "PropertyCode": "de592649-bb0a-3f79-9887-1d5bd9179a5b",
@@ -6628,7 +6628,7 @@
       ]
     },
     {
-      "ClassificationType": "Class",
+      "ClassType": "Class",
       "Code": "6d295fca-97c2-3015-a5fa-e98a4d2779ed",
       "Definition": "Mechanisch, gesloten apparaat voor het aanpassen van het toerental. (Bron: Waternet)",
       "Name": "tandwielkast",
@@ -6636,7 +6636,7 @@
       "RelatedIfcEntityNamesList": [
         "IfcBearing"
       ],
-      "ClassificationProperties": [
+      "ClassProperties": [
         {
           "Code": "73f5f428ab24ff7efe69a991771479ea",
           "PropertyCode": "ec243e6c-a155-3d6c-be4e-eb423826ef1e",
@@ -6748,7 +6748,7 @@
       ]
     },
     {
-      "ClassificationType": "Class",
+      "ClassType": "Class",
       "Code": "f4e56c72-8e14-358c-b94b-e78db73e2a9b",
       "Definition": "Een bovengrond wat niet bestraat of geasfalteerd is. (Bron: Waternet)",
       "Name": "onverhard oppervlak",
@@ -6756,7 +6756,7 @@
       "RelatedIfcEntityNamesList": [
         "IfcPavement"
       ],
-      "ClassificationProperties": [
+      "ClassProperties": [
         {
           "Code": "261da3603a8bdd7ac9c0ccf1fc7a5e75",
           "PropertyCode": "9c126169-1ba4-3531-bf9d-bbb32ed5f430",
@@ -6772,7 +6772,7 @@
       ]
     },
     {
-      "ClassificationType": "Class",
+      "ClassType": "Class",
       "Code": "2260b4b8-1441-320d-983b-ecb8d88686ff",
       "Definition": "Geleidend deel bestemd om een gespecificeerde elektrische stroom te voeren. (Bron: NEN-IEC 60050-826:2004, IEV 826-14-06)",
       "Name": "geleider",
@@ -6780,7 +6780,7 @@
       "RelatedIfcEntityNamesList": [
         "IfcCableSegment"
       ],
-      "ClassificationProperties": [
+      "ClassProperties": [
         {
           "Code": "9d300f1f8b9d9fec7a248ac794eceb3f",
           "PropertyCode": "23d25588-5235-3943-a10a-a120039ca7e8",
@@ -6892,7 +6892,7 @@
       ]
     },
     {
-      "ClassificationType": "Class",
+      "ClassType": "Class",
       "Code": "c63795d5-a79f-3505-9318-c7abc4065f77",
       "Definition": "Eerste verdeler waar elektrotechnische voeding vanuit het net binnenkomt, en van waar het verdeeld wordt over verdere groepen. (Bron: Waternet)",
       "Name": "hoofdverdeler",
@@ -6900,7 +6900,7 @@
       "RelatedIfcEntityNamesList": [
         "IfcBuildingElementProxy"
       ],
-      "ClassificationProperties": [
+      "ClassProperties": [
         {
           "Code": "851848d058886d5b0ba1e33b1753692a",
           "PropertyCode": "e46c97a9-e682-3113-9448-82c3bc586255",
@@ -7012,7 +7012,7 @@
       ]
     },
     {
-      "ClassificationType": "Class",
+      "ClassType": "Class",
       "Code": "cb8fe341-bd33-3c9c-858e-97b0a9bfdf8a",
       "Definition": "Afsluitbare behuizing die dient om iets in om te bergen en/ of te beschermen. (Bron: NEN 2767-4)",
       "Name": "kast",
@@ -7020,7 +7020,7 @@
       "RelatedIfcEntityNamesList": [
         "IfcBuildingElementProxy"
       ],
-      "ClassificationProperties": [
+      "ClassProperties": [
         {
           "Code": "8edd450e4a5f574d23623f51e47ff033",
           "PropertyCode": "22fe1771-d3c3-3958-873b-e21f8b719b2b",
@@ -7138,7 +7138,7 @@
       ]
     },
     {
-      "ClassificationType": "Class",
+      "ClassType": "Class",
       "Code": "3a4a4e5c-0713-3ff1-a2e0-21704a79fed5",
       "Definition": "Installatie die dient om binnenruimten in een bouwwerk te verlichten. (Bron: Waternet)",
       "Name": "binnenverlichtingsinstallatie",
@@ -7146,7 +7146,7 @@
       "RelatedIfcEntityNamesList": [
         "IfcSpatialZone"
       ],
-      "ClassificationProperties": [
+      "ClassProperties": [
         {
           "Code": "6c52e07e7d8e6895f7c0019288254d3f",
           "PropertyCode": "7e235565-64ef-3a15-9d35-0fbf7b9aa3b4",
@@ -7258,7 +7258,7 @@
       ]
     },
     {
-      "ClassificationType": "Class",
+      "ClassType": "Class",
       "Code": "0dfb2bd6-3fd7-321c-b562-27fbb43b704f",
       "Definition": "Hoofdschakel en verdeelinrichting is de plek van waaruit de elektrische energie beveiligd, verdeeld en geschakeld wordt. (Bron: Waternet)",
       "Name": "hoofdschakel en verdeelinrichting",
@@ -7266,7 +7266,7 @@
       "RelatedIfcEntityNamesList": [
         "IfcBuildingElementProxy"
       ],
-      "ClassificationProperties": [
+      "ClassProperties": [
         {
           "Code": "001b05d7625c3fa938c7d556784d1278",
           "PropertyCode": "6957dd42-eef1-39cd-8a24-a0aacda07705",
@@ -7390,7 +7390,7 @@
       ]
     },
     {
-      "ClassificationType": "Class",
+      "ClassType": "Class",
       "Code": "ca310160-de3d-3934-8bcf-a075f86b4448",
       "Definition": "Mechanisch apparaat die het mogelijk maakt het vermogen van de aandrijving over te brengen en/of om te vormen naar het werktuig. (Bron: Waternet)",
       "Name": "overbrenging",
@@ -7398,7 +7398,7 @@
       "RelatedIfcEntityNamesList": [
         "IfcBearing"
       ],
-      "ClassificationProperties": [
+      "ClassProperties": [
         {
           "Code": "820219e56692dad437f6d51e76c06c30",
           "PropertyCode": "e49f2aad-d8bc-3310-98a9-89ea99e8e56c",
@@ -7522,7 +7522,7 @@
       ]
     },
     {
-      "ClassificationType": "Class",
+      "ClassType": "Class",
       "Code": "bb02bb03-4375-3049-9260-5f74a6b9d961",
       "Definition": "Door een type landgebruik gekarakteriseerd, zichtbaar begrensd stuk grond. (Bron: NEN 2767-4)",
       "Name": "terrein",
@@ -7530,7 +7530,7 @@
       "RelatedIfcEntityNamesList": [
         "IfcSite"
       ],
-      "ClassificationProperties": [
+      "ClassProperties": [
         {
           "Code": "1eacbb23ba28a99c37e2d002f99e5f90",
           "PropertyCode": "ec243e6c-a155-3d6c-be4e-eb423826ef1e",
@@ -7582,7 +7582,7 @@
       ]
     },
     {
-      "ClassificationType": "Class",
+      "ClassType": "Class",
       "Code": "f720e21d-ea8d-3ae4-82f9-1970c2083902",
       "Definition": "Installatie voor het beschermen van gebouwen en kunstwerken tegen de gevolgen van blikseminslag en het beveiligen van mens en dier bij aardstroomfouten. (Bron: NEN 2767-4)",
       "Name": "aarding- en bliksembeveiligingsinstallatie",
@@ -7590,7 +7590,7 @@
       "RelatedIfcEntityNamesList": [
         "IfcDistributionSystem"
       ],
-      "ClassificationProperties": [
+      "ClassProperties": [
         {
           "Code": "8ca599f785305aea5a8dc20e9a0da58b",
           "PropertyCode": "3339f0d0-0961-362b-a458-b5aa2abda2ca",
@@ -7714,7 +7714,7 @@
       ]
     },
     {
-      "ClassificationType": "Class",
+      "ClassType": "Class",
       "Code": "7ea754a1-0284-397d-b4f1-bcec5696169b",
       "Definition": "Constructie die bestaat uit twee bomen en daartussen een reeks van sporten voor het overbruggen van hoogteverschillen. (Bron: NEN 2767-4)",
       "Name": "ladder",
@@ -7722,7 +7722,7 @@
       "RelatedIfcEntityNamesList": [
         "IfcStairFlight"
       ],
-      "ClassificationProperties": [
+      "ClassProperties": [
         {
           "Code": "23c234e07dcc4d43f9c876ba7cffd8d2",
           "PropertyCode": "e46c97a9-e682-3113-9448-82c3bc586255",
@@ -7840,7 +7840,7 @@
       ]
     },
     {
-      "ClassificationType": "Class",
+      "ClassType": "Class",
       "Code": "0c5ddb07-0cac-3cf9-a8f6-07cb8c8ca1b1",
       "Definition": "Metalen stang of constructie, aangebracht op een bouwwerk waar blikseminslag plaats kan vinden, die dient om schade door blikseminslag te voorkomen door de energie van de bliksem naar de grond te geleiden. (Bron: NEN 2767-4)",
       "Name": "bliksemafleider",
@@ -7848,7 +7848,7 @@
       "RelatedIfcEntityNamesList": [
         "IfcDiscreteAccessory"
       ],
-      "ClassificationProperties": [
+      "ClassProperties": [
         {
           "Code": "756f02e65982d8c29296f71026d5b9fb",
           "PropertyCode": "ec243e6c-a155-3d6c-be4e-eb423826ef1e",
@@ -7960,7 +7960,7 @@
       ]
     },
     {
-      "ClassificationType": "Class",
+      "ClassType": "Class",
       "Code": "db067163-0c3d-38b9-a7c0-f55202331ed2",
       "Definition": "Aangelegd waterbekken dat dient ter verfraaiing, maar ook als berging voor water. (Bron: NEN 2767-4)",
       "Name": "vijver",
@@ -7968,7 +7968,7 @@
       "RelatedIfcEntityNamesList": [
         "IfcElectricGenerator"
       ],
-      "ClassificationProperties": [
+      "ClassProperties": [
         {
           "Code": "5cf23ebb7bb2074b9abfe74c7778ebd0",
           "PropertyCode": "9c126169-1ba4-3531-bf9d-bbb32ed5f430",
@@ -7984,7 +7984,7 @@
       ]
     },
     {
-      "ClassificationType": "Class",
+      "ClassType": "Class",
       "Code": "79567311-77ac-3d63-b8a2-7eb7538633d4",
       "Definition": "Buis of paal die wordt gebruikt om iets op hoogte te brengen. (Bron: Waternet)",
       "Name": "mast",
@@ -7992,7 +7992,7 @@
       "RelatedIfcEntityNamesList": [
         "IfcBuildingElementProxy"
       ],
-      "ClassificationProperties": [
+      "ClassProperties": [
         {
           "Code": "49d8552ba8e0eff4ed8740c8363c57d4",
           "PropertyCode": "7e235565-64ef-3a15-9d35-0fbf7b9aa3b4",
@@ -8110,7 +8110,7 @@
       ]
     },
     {
-      "ClassificationType": "Class",
+      "ClassType": "Class",
       "Code": "89fb6bd9-4ee0-3d4d-a855-653224a3dde5",
       "Definition": "Bedekking van de bodem, bijvoorbeeld met stortsteen of zetsteen, die erop gericht is de kwaliteit van de bodem te behouden. (Bron: Waternet)",
       "Name": "bodembescherming",
@@ -8118,7 +8118,7 @@
       "RelatedIfcEntityNamesList": [
         "IfcGeographicElement"
       ],
-      "ClassificationProperties": [
+      "ClassProperties": [
         {
           "Code": "0546f9dcf9ad8669b961e1f05dc86ad9",
           "PropertyCode": "ec243e6c-a155-3d6c-be4e-eb423826ef1e",
@@ -8236,7 +8236,7 @@
       ]
     },
     {
-      "ClassificationType": "Class",
+      "ClassType": "Class",
       "Code": "e9485230-8acd-3594-89a6-a2a259b7543f",
       "Definition": "Constructie, bestaande uit een reeks van treden, voor het te voet overbruggen van twee op verschillende niveaus gelegen vlakken. (Bron: NEN 2767-4)",
       "Name": "trap",
@@ -8244,7 +8244,7 @@
       "RelatedIfcEntityNamesList": [
         "IfcStair"
       ],
-      "ClassificationProperties": [
+      "ClassProperties": [
         {
           "Code": "9fb12c494f8909d1c8d8779d362f89d7",
           "PropertyCode": "34264104-97f8-3956-bcf0-f2bc74448034",
@@ -8362,7 +8362,7 @@
       ]
     },
     {
-      "ClassificationType": "Class",
+      "ClassType": "Class",
       "Code": "42f3887d-cea0-3511-b86c-a959279bebca",
       "Definition": "Scheidingsconstructie met een overwegend verticaal karakter. (Bron: NEN 2767-4)",
       "Name": "wand",
@@ -8370,7 +8370,7 @@
       "RelatedIfcEntityNamesList": [
         "IfcWall"
       ],
-      "ClassificationProperties": [
+      "ClassProperties": [
         {
           "Code": "0044a344fa6e9622c452208200483806",
           "PropertyCode": "af7bf91b-d4d0-3501-8e59-89940f7e8583",
@@ -8482,7 +8482,7 @@
       ]
     },
     {
-      "ClassificationType": "Class",
+      "ClassType": "Class",
       "Code": "822c8bbe-e173-3734-a81a-029cd11df35a",
       "Definition": "Constructie dat zorgt voor steun en overgang van het grondlichaam naar bijvoorbeeld een brug of sluis. (Bron: NEN 2767-4)",
       "Name": "aansluitconstructie",
@@ -8490,7 +8490,7 @@
       "RelatedIfcEntityNamesList": [
         "IfcFastener"
       ],
-      "ClassificationProperties": [
+      "ClassProperties": [
         {
           "Code": "bc9f8868ba02f165ccb21518c65bb25e",
           "PropertyCode": "34264104-97f8-3956-bcf0-f2bc74448034",

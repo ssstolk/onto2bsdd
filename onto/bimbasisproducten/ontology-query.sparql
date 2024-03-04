@@ -1,0 +1,66 @@
+# SPDX-License-Identifier: Apache-2.0
+# Copyright © 2023 Sander Stolk
+
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX bs: <https://w3id.org/def/basicsemantics-owl#>
+PREFIX nen2660: <https://w3id.org/nen2660/def#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX lotl: <http://www.laces.tech/publication/ns/semmtech/live/laces/schema/otl-manager/>
+
+SELECT DISTINCT ?ontoClassPrefLabel ?ontoClassURI ?ontoClassDefinition ?mappedClassRelation ?mappedClassRelationURI ?mappedClassURI ?ontoParentClassPrefLabel ?ontoParentClass ?ontoPropertyURI ?ontoPropertyPrefLabel ?ontoPropertyDatatypeLabel ?ontoPropertyDatatype
+WHERE {
+  ?ontoClassURI a lotl:PhysicalObject .
+  ?ontoClassURI lotl:attr-Conceptual-name ?ontoClassPrefLabel .
+  
+  OPTIONAL {
+    ?ontoClassURI lotl:rel-Conceptual-isSpecializationOf ?ontoParentClass .
+    ?ontoParentClass lotl:attr-Conceptual-name ?ontoParentClassPrefLabel .
+    FILTER (STRSTARTS(STR(?ontoParentClass), "http://hub.laces.tech/digitalbuildingdata/ils-o-en-e/production/poc-bsdd-publicatie/")
+	     || STRSTARTS(STR(?ontoParentClass), "http://www.example.org/")) .
+  }
+  
+  OPTIONAL
+  {{
+      ?hasAspect a lotl:PhysicalObject-hasAspect-Aspect .
+      ?hasAspect lotl:rel-Relation-from ?ontoClassURI .
+      ?hasAspect lotl:rel-Relation-to ?ontoPropertyURI .
+      ?ontoPropertyURI lotl:attr-Conceptual-name ?ontoPropertyPrefLabel .
+      ?ontoPropertyURI lotl:attr-Aspect-datatype ?ontoPropertyDatatype .
+      BIND (STRAFTER(STR(?ontoPropertyDatatype), STR(xsd:)) AS ?ontoPropertyDatatypeLabel) .
+  } UNION {
+      {
+        ?ontoClassURI lotl:rel-Conceptual-hasExternalLink ?mapping .
+        ?mapping lotl:attr-ExternalLink-uri ?mappedClassURIstring .
+        ?mapping lotl:attr-ExternalLink-relation ?mappedClassRelationString .
+        BIND (URI(STR(?mappedClassURIstring)) AS ?mappedClassURI) .
+        BIND (IF((?mappedClassRelationString="isSpecializationOf"), "IsChildOf",
+              IF((?mappedClassRelationString="isGeneralizationOf"), "IsParentOf",
+              IF((?mappedClassRelationString="isSameAs"), "IsEqualTo",
+              IF((?mappedClassRelationString="isWholeFor"), "HasPart",
+              IF((?mappedClassRelationString="isPartOf"), "IsPartOf", "HasReference"))))) 
+              AS ?mappedClassRelation) .
+        BIND (IF((?mappedClassRelationString="isSpecializationOf"), rdfs:subClassOf,
+              IF((?mappedClassRelationString="isGeneralizationOf"), URI(CONCAT(STR(owl:inverseOf),":",STR(rdfs:subClassOf))),
+              IF((?mappedClassRelationString="isSameAs"), owl:equivalentClass,
+              IF((?mappedClassRelationString="isWholeFor"), nen2660:hasPart,
+              IF((?mappedClassRelationString="isPartOf"), URI(CONCAT(STR(owl:inverseOf),":",STR(nen2660:hasPart))), rdfs:seeAlso))))) 
+              AS ?mappedClassRelationURI) .
+      } UNION {
+        ?ontoClassURI lotl:rel-Conceptual-isSpecializationOf ?mappedClassURI .
+        FILTER (!(STRSTARTS(STR(?mappedClassURI), "http://hub.laces.tech/digitalbuildingdata/ils-o-en-e/production/poc-bsdd-publicatie/")
+               || STRSTARTS(STR(?mappedClassURI), "http://www.example.org/"))) .
+        BIND ("IsChildOf" AS ?mappedClassRelation) . # in Laces: "isSpecializationOf"
+        BIND (rdfs:subClassOf AS ?mappedClassRelationURI) .
+      } UNION {
+        ?mappedClassURI lotl:rel-Conceptual-isSpecializationOf ?ontoClassURI .
+        FILTER (!(STRSTARTS(STR(?mappedClassURI), "http://hub.laces.tech/digitalbuildingdata/ils-o-en-e/production/poc-bsdd-publicatie/")
+               || STRSTARTS(STR(?mappedClassURI), "http://www.example.org/"))) .
+        BIND ("IsParentOf" AS ?mappedClassRelation) . # in Laces: "isGeneralizationOf"
+        BIND (URI(CONCAT(STR(owl:inverseOf),":",STR(rdfs:subClassOf))) AS ?mappedClassRelationURI) .
+      }
+  }}
+}
