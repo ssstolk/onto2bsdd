@@ -1,0 +1,14 @@
+{
+    "OrganizationCode": "volkerwesselsbvgo",
+    "DictionaryCode": "stabu2_demo",
+    "DictionaryVersion": "0.1",
+    "DictionaryName": "STABU2 demo",
+    "ReleaseDate": "2024-03-06T19:18:56.808Z",
+    "Status": "Preview",
+    "UseOwnUri": true,
+    "DictionaryUri": "http://hub.laces.tech/ketenstandaard/linked-data-pilot/stabu2/",
+    "LanguageIsoCode": "nl-NL",
+    "License": "This is a limited subset of content, shared with permission from Ketenstandaard, solely for the purpose of demonstration.",
+    "QualityAssuranceProcedure": "This content is in draft and still under development. Do not use this as final content",
+    "ModelVersion": "2.0"
+}

@@ -1,6 +1,10 @@
 /* SPDX-License-Identifier: Apache-2.0
    Copyright © 2023 Sander Stolk */
 
+const DEFAULT_URI = "http://www.example.org/";
+const OLD_IFC_URI = "buildingsmart/ifc-4.3/";
+const NEW_IFC_URI = "buildingsmart/ifc/4.3/";
+
 class Onto2bsdd {
   /* Transforms input CSV content to bSDD in its JSON import model format.
        The CSV content is expected to have a header with the following columns:
@@ -24,28 +28,46 @@ class Onto2bsdd {
     console.log(JSON.stringify(csvObjects));
 
     const result = JSON.parse(JSON.stringify(header));
+
+    // // set release date to now
+    // result.ReleaseDate = new Date().toISOString();
+
     const dictionaryUri = result.DictionaryUri;
     const resultClassifications = [];
     const resultProperties = [];
     // const resultMaterials = [];
 
     for (const csvObject of csvObjects) {
+      const ontoClassURI = replaceDefaultUri(
+        csvObject.ontoClassURI,
+        dictionaryUri
+      );
+      const ontoParentClass = replaceDefaultUri(
+        csvObject.ontoParentClass,
+        dictionaryUri
+      );
+      const ontoPropertyURI = replaceDefaultUri(
+        csvObject.ontoPropertyURI,
+        dictionaryUri
+      );
+      // const classCode = csvObject.ontoClassPrefLabel
+      // .replace(/[#%\/\:\{\}\[\]\|;<>?`~\s]/g, "")
+      // .toLowerCase(),
+
       let resultClassificationObject = Onto2bsdd.getObjectWithProperty(
         resultClassifications,
         "OwnedUri",
-        csvObject.ontoClassURI
+        ontoClassURI
       );
 
       if (!resultClassificationObject) {
         resultClassificationObject = {
           ClassType: "Class",
-          Code: Onto2bsdd.getLocalname(csvObject.ontoClassURI),
+          Code: Onto2bsdd.getLocalname(ontoClassURI),
           Definition: csvObject.ontoClassDefinition,
           Name: csvObject.ontoClassPrefLabel,
-          OwnedUri: csvObject.ontoClassURI,
-          ParentClassificationCode: Onto2bsdd.getLocalname(
-            csvObject.ontoParentClass
-          ),
+          OwnedUri: ontoClassURI,
+          ParentClassCode: Onto2bsdd.getLocalname(ontoParentClass),
           // RelatedIfcEntityNamesList: [csvObject.ifcClassLabel],
           Status: "Preview",
           ClassRelations: [],
@@ -54,11 +76,11 @@ class Onto2bsdd {
         resultClassifications.push(resultClassificationObject);
       }
 
-      if (csvObject.ontoPropertyURI) {
+      if (ontoPropertyURI) {
         let resultPropertyObject = Onto2bsdd.getObjectWithProperty(
           resultProperties,
           "OwnedUri",
-          csvObject.ontoPropertyURI
+          ontoPropertyURI
         );
         if (!resultPropertyObject) {
           const bsddDatatype =
@@ -68,42 +90,43 @@ class Onto2bsdd {
               ? "Time"
               : "String";
           resultPropertyObject = {
-            Code: Onto2bsdd.getLocalname(csvObject.ontoPropertyURI),
+            Code: Onto2bsdd.getLocalname(ontoPropertyURI),
             DataType: bsddDatatype,
             Definition: csvObject.ontoPropertyDefinition,
             Name: csvObject.ontoPropertyPrefLabel,
-            OwnedUri: csvObject.ontoPropertyURI,
+            OwnedUri: ontoPropertyURI,
           };
           resultProperties.push(resultPropertyObject);
         }
 
-        const resultPropertyLinkObject = {
-          Code: md5(
-            resultClassificationObject.Code + "-" + resultPropertyObject.Code
-          ),
+        const classProperty = {
+          // Code: md5(
+          //   resultClassificationObject.Code + "-" + resultPropertyObject.Code
+          // ),
+          Code: resultPropertyObject.Code,
           PropertyCode: resultPropertyObject.Code,
           PropertySet: result.DictionaryCode,
           PropertyType: "Property",
         };
-        if (csvObject.ontoPropertyURI.includes(dictionaryUri)) {
-          resultPropertyLinkObject.OwnedUri = csvObject.ontoPropertyURI;
+        if (ontoPropertyURI.includes(dictionaryUri)) {
+          classProperty.OwnedUri = ontoPropertyURI;
         } else {
-          resultPropertyLinkObject.OwnedUri = dictionaryUri + "fake-uri-404";
+          classProperty.OwnedUri =
+            dictionaryUri + "class-property-fake-uri-404";
         }
-        resultClassificationObject.ClassProperties.push(
-          resultPropertyLinkObject
-        );
+        resultClassificationObject.ClassProperties.push(classProperty);
       }
 
       if (csvObject.mappedClassURI && csvObject.mappedClassRelation) {
-        const resultIfcRelationObject = {
+        const classRelation = {
           RelationType: csvObject.mappedClassRelation,
-          RelatedClassUri: csvObject.mappedClassURI,
+          RelatedClassUri: replaceIfcUri(csvObject.mappedClassURI),
         };
         if (csvObject.mappedClassURI.includes(dictionaryUri)) {
-          resultIfcRelationObject.OwnedUri = csvObject.mappedClassURI;
+          classRelation.OwnedUri = csvObject.mappedClassURI;
         } else {
-          resultIfcRelationObject.OwnedUri = dictionaryUri + "fake-uri-404";
+          classRelation.OwnedUri =
+            dictionaryUri + "class-relation-fake-uri-404";
         }
 
         // switch (csvObject.mappedClassRelation) {
@@ -119,7 +142,7 @@ class Onto2bsdd {
         //   default:
         //     break;
         // }
-        resultClassificationObject.ClassRelations.push(resultIfcRelationObject);
+        resultClassificationObject.ClassRelations.push(classRelation);
       }
     }
 
@@ -147,12 +170,9 @@ class Onto2bsdd {
   static pruneInternalReferences(result) {
     for (const classification of result.Classes) {
       if (
-        !Onto2bsdd.isPresent(
-          classification.ParentClassificationCode,
-          result.Classes
-        )
+        !Onto2bsdd.isPresent(classification.ParentClassCode, result.Classes)
       ) {
-        classification.ParentClassificationCode = undefined;
+        classification.ParentClassCode = undefined;
       }
       for (const classificationProperty of classification.ClassProperties) {
         if (
@@ -178,4 +198,14 @@ class Onto2bsdd {
     }
     return false;
   }
+}
+
+function replaceDefaultUri(uri, dictionaryUri) {
+  return uri ? uri.replace(DEFAULT_URI, dictionaryUri) : undefined;
+}
+
+function replaceIfcUri(uri) {
+  return uri && uri.includes(OLD_IFC_URI)
+    ? uri.replace(OLD_IFC_URI, NEW_IFC_URI)
+    : uri;
 }
