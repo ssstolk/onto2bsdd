@@ -35,11 +35,6 @@ class Onto2bsdd {
     // const resultMaterials = [];
 
     for (const csvObject of csvObjects) {
-
-      // const classCode = csvObject.ontoClassPrefLabel
-      // .replace(/[#%\/\:\{\}\[\]\|;<>?`~\s]/g, "")
-      // .toLowerCase(),
-
       let resultClassificationObject = Onto2bsdd.getObjectWithProperty(
         resultClassifications,
         "OwnedUri",
@@ -49,11 +44,15 @@ class Onto2bsdd {
       if (!resultClassificationObject) {
         resultClassificationObject = {
           ClassType: "Class",
-          Code: Onto2bsdd.getLocalname(csvObject.ontoClassURI),
+          Code: Onto2bsdd.codeFromName(
+            Onto2bsdd.getLocalname(csvObject.ontoClassURI)
+          ),
           Definition: csvObject.ontoClassDefinition,
           Name: csvObject.ontoClassPrefLabel,
           OwnedUri: csvObject.ontoClassURI,
-          ParentClassCode: Onto2bsdd.getLocalname(csvObject.ontoParentClass),
+          ParentClassCode: Onto2bsdd.codeFromName(
+            Onto2bsdd.getLocalname(csvObject.ontoParentClass)
+          ),
           // RelatedIfcEntityNamesList: [csvObject.ifcClassLabel],
           Status: "Preview",
           ClassRelations: [],
@@ -76,7 +75,9 @@ class Onto2bsdd {
               ? "Time"
               : "String";
           resultPropertyObject = {
-            Code: Onto2bsdd.getLocalname(csvObject.ontoPropertyURI),
+            Code: Onto2bsdd.codeFromName(
+              Onto2bsdd.getLocalname(csvObject.ontoPropertyURI)
+            ),
             DataType: bsddDatatype,
             Definition: csvObject.ontoPropertyDefinition,
             Name: csvObject.ontoPropertyPrefLabel,
@@ -140,13 +141,53 @@ class Onto2bsdd {
     return JSON.stringify(result, null, 2);
   }
 
+  /**
+   * Converts a string into a valid bSDD code.
+   *
+   * The function replaces spaces with underscores and removes any characters
+   * that are not alphanumeric, underscores, or hyphens.
+   *
+   * @param {string} name - The string to convert into a valid bSDD code.
+   * @returns {string} The converted bSDD code.
+   * @throws {TypeError} If the input is not a string.
+   */
+  static codeFromName(name) {
+    if (typeof name !== "string") {
+      throw new TypeError("Input must be a string");
+    }
+
+    let code = name.replace(/ /g, "_");
+    code = code.replace(/[^a-zA-Z0-9_-]/g, "");
+
+    return code;
+  }
+
+  /**
+   * Checks if a given URI is within the buildingsmart namespace.
+   *
+   * @param {string} uri - The URI to check.
+   * @returns {boolean} - Returns true if the URI starts with "https://identifier.buildingsmart.org/", otherwise false.
+   */
   static isInBsddNamespace(uri) {
     return uri.startsWith("https://identifier.buildingsmart.org/");
   }
 
+  /**
+   * Extracts the local name from a given URI.
+   *
+   * The local name is the part of the URI after the last '#' or '/' character.
+   *
+   * @param {string} uri - The URI from which to extract the local name.
+   * @returns {string|null} The local name extracted from the URI, or null if the input is not a string.
+   */
   static getLocalname(uri) {
-    if (uri.includes("#")) return uri.split("#").pop();
-    return uri.split("/").pop();
+    if (typeof uri !== "string") return null;
+
+    const trimmedUri = uri.trim();
+    const delimiter = trimmedUri.includes("#") ? "#" : "/";
+    const parts = trimmedUri.split(delimiter);
+
+    return parts.pop() || null;
   }
 
   static getObjectWithProperty(containerObject, propertyName, propertyValue) {
