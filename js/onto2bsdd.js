@@ -3,22 +3,22 @@
 
 class Onto2bsdd {
   /* Transforms input CSV content to bSDD in its JSON import model format.
-          The CSV content is expected to have a header with the following columns:
-          - ontoClassPrefLabel
-          - ontoClassURI
-          - ontoClassDefinition
+         The CSV content is expected to have a header with the following columns:
+         - ontoClassPrefLabel
+         - ontoClassURI
+         - ontoClassDefinition
           - ifcClassLabel
           - ifcClassURI
           - ontoParentClassPrefLabel
-          - ontoParentClass
-          - ontoPropertyURI
-          - ontoPropertyPrefLabel
-          - ontoPropertyDatatypeLabel
-          - ontoPropertyDatatype
-          
-          For documentation on the bSDD import model, see: 
-          https://github.com/buildingSMART/bSDD/blob/master/Documentation/bSDD%20JSON%20import%20model.md .
-       */
+         - ontoParentClass
+         - ontoPropertyURI
+         - ontoPropertyPrefLabel
+         - ontoPropertyDatatypeLabel
+         - ontoPropertyDatatype         
+
+         For documentation on the bSDD import model, see: 
+         https://github.com/buildingSMART/bSDD/blob/master/Documentation/bSDD%20JSON%20import%20model.md .
+      */
   static fromCSV(input, header = {}) {
     const csvObjects = $.csv.toObjects(input); // see https://github.com/evanplaice/jquery-csv/#documentation
     console.log(JSON.stringify(csvObjects));
@@ -34,9 +34,6 @@ class Onto2bsdd {
     // const resultMaterials = [];
 
     for (const csvObject of csvObjects) {
-      const ontoClassURI = csvObject.ontoClassURI;
-      const ontoParentClass = csvObject.ontoParentClass;
-      const ontoPropertyURI = csvObject.ontoPropertyURI;
 
       // const classCode = csvObject.ontoClassPrefLabel
       // .replace(/[#%\/\:\{\}\[\]\|;<>?`~\s]/g, "")
@@ -45,17 +42,17 @@ class Onto2bsdd {
       let resultClassificationObject = Onto2bsdd.getObjectWithProperty(
         resultClassifications,
         "OwnedUri",
-        ontoClassURI
+        csvObject.ontoClassURI
       );
 
       if (!resultClassificationObject) {
         resultClassificationObject = {
           ClassType: "Class",
-          Code: Onto2bsdd.getLocalname(ontoClassURI),
+          Code: Onto2bsdd.getLocalname(csvObject.ontoClassURI),
           Definition: csvObject.ontoClassDefinition,
           Name: csvObject.ontoClassPrefLabel,
-          OwnedUri: ontoClassURI,
-          ParentClassCode: Onto2bsdd.getLocalname(ontoParentClass),
+          OwnedUri: csvObject.ontoClassURI,
+          ParentClassCode: Onto2bsdd.getLocalname(csvObject.ontoParentClass),
           // RelatedIfcEntityNamesList: [csvObject.ifcClassLabel],
           Status: "Preview",
           ClassRelations: [],
@@ -64,11 +61,11 @@ class Onto2bsdd {
         resultClassifications.push(resultClassificationObject);
       }
 
-      if (ontoPropertyURI) {
+      if (csvObject.ontoPropertyURI) {
         let resultPropertyObject = Onto2bsdd.getObjectWithProperty(
           resultProperties,
           "OwnedUri",
-          ontoPropertyURI
+          csvObject.ontoPropertyURI
         );
         if (!resultPropertyObject) {
           const bsddDatatype =
@@ -78,11 +75,11 @@ class Onto2bsdd {
               ? "Time"
               : "String";
           resultPropertyObject = {
-            Code: Onto2bsdd.getLocalname(ontoPropertyURI),
+            Code: Onto2bsdd.getLocalname(csvObject.ontoPropertyURI),
             DataType: bsddDatatype,
             Definition: csvObject.ontoPropertyDefinition,
             Name: csvObject.ontoPropertyPrefLabel,
-            OwnedUri: ontoPropertyURI,
+            OwnedUri: csvObject.ontoPropertyURI,
           };
           resultProperties.push(resultPropertyObject);
         }
@@ -92,11 +89,12 @@ class Onto2bsdd {
             resultClassificationObject.Code + "-" + resultPropertyObject.Code
           ),
           PropertyCode: resultPropertyObject.Code,
+          Uid: resultPropertyObject.Code,
           PropertySet: result.DictionaryCode,
           PropertyType: "Property",
         };
-        if (!Onto2bsdd.isInBsddNamespace(ontoPropertyURI)) {
-          classProperty.OwnedUri = ontoPropertyURI;
+        if (!Onto2bsdd.isInBsddNamespace(csvObject.ontoPropertyURI)) {
+          classProperty.OwnedUri = csvObject.ontoPropertyURI;
         }
         resultClassificationObject.ClassProperties.push(classProperty);
       }
