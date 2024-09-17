@@ -13,30 +13,30 @@ PREFIX lotl: <http://www.laces.tech/publication/ns/semmtech/live/laces/schema/ot
 
 SELECT DISTINCT ?ontoClassPrefLabel ?ontoClassURI ?ontoClassDefinition ?mappedClassRelation ?mappedClassRelationURI ?mappedClassURI ?ontoParentClassPrefLabel ?ontoParentClass ?ontoPropertyURI ?ontoPropertyPrefLabel ?ontoPropertyDatatypeLabel ?ontoPropertyDatatype
 WHERE {
-  ?ontoClassURI a lotl:PhysicalObject .
-  ?ontoClassURI lotl:attr-Conceptual-name ?ontoClassPrefLabel .
+  ?originalOntoClassURI a lotl:PhysicalObject .
+  ?originalOntoClassURI lotl:attr-Conceptual-name ?ontoClassPrefLabel .
   
   OPTIONAL {
-    ?ontoClassURI lotl:rel-Conceptual-isSpecializationOf ?ontoParentClass .
-    ?ontoParentClass lotl:attr-Conceptual-name ?ontoParentClassPrefLabel .
-    FILTER (STRSTARTS(STR(?ontoParentClass), "http://hub.laces.tech/digitalbuildingdata/ils-o-en-e/production/poc-bsdd-publicatie/")
-	     || STRSTARTS(STR(?ontoParentClass), "http://www.example.org/")) .
+    ?originalOntoClassURI lotl:rel-Conceptual-isSpecializationOf ?originalOntoParentClass .
+    ?originalOntoParentClass lotl:attr-Conceptual-name ?ontoParentClassPrefLabel .
+    FILTER (STRSTARTS(STR(?originalOntoParentClass), "http://hub.laces.tech/digitalbuildingdata/ils-o-en-e/production/poc-bsdd-publicatie/")
+	     || STRSTARTS(STR(?originalOntoParentClass), "http://www.example.org/")) .
   }
   
   OPTIONAL
   {{
       ?hasAspect a lotl:PhysicalObject-hasAspect-Aspect .
-      ?hasAspect lotl:rel-Relation-from ?ontoClassURI .
-      ?hasAspect lotl:rel-Relation-to ?ontoPropertyURI .
-      ?ontoPropertyURI lotl:attr-Conceptual-name ?ontoPropertyPrefLabel .
-      ?ontoPropertyURI lotl:attr-Aspect-datatype ?ontoPropertyDatatype .
+      ?hasAspect lotl:rel-Relation-from ?originalOntoClassURI .
+      ?hasAspect lotl:rel-Relation-to ?originalOntoPropertyURI  .
+      ?originalOntoPropertyURI  lotl:attr-Conceptual-name ?ontoPropertyPrefLabel .
+      ?originalOntoPropertyURI  lotl:attr-Aspect-datatype ?ontoPropertyDatatype .
       BIND (STRAFTER(STR(?ontoPropertyDatatype), STR(xsd:)) AS ?ontoPropertyDatatypeLabel) .
   } UNION {
       {
-        ?ontoClassURI lotl:rel-Conceptual-hasExternalLink ?mapping .
-        ?mapping lotl:attr-ExternalLink-uri ?mappedClassURIstring .
+        ?originalOntoClassURI lotl:rel-Conceptual-hasExternalLink ?mapping .
+        ?mapping lotl:attr-ExternalLink-uri ?originalMappedClassURIstring .
         ?mapping lotl:attr-ExternalLink-relation ?mappedClassRelationString .
-        BIND (URI(STR(?mappedClassURIstring)) AS ?mappedClassURI) .
+        BIND (URI(STR(?originalMappedClassURIstring)) AS ?originalMappedClassURI) .
         BIND (IF((?mappedClassRelationString="isSpecializationOf"), "IsChildOf",
               IF((?mappedClassRelationString="isGeneralizationOf"), "IsParentOf",
               IF((?mappedClassRelationString="isSameAs"), "IsEqualTo",
@@ -50,17 +50,30 @@ WHERE {
               IF((?mappedClassRelationString="isPartOf"), URI(CONCAT(STR(owl:inverseOf),":",STR(nen2660:hasPart))), rdfs:seeAlso))))) 
               AS ?mappedClassRelationURI) .
       } UNION {
-        ?ontoClassURI lotl:rel-Conceptual-isSpecializationOf ?mappedClassURI .
-        FILTER (!(STRSTARTS(STR(?mappedClassURI), "http://hub.laces.tech/digitalbuildingdata/ils-o-en-e/production/poc-bsdd-publicatie/")
-               || STRSTARTS(STR(?mappedClassURI), "http://www.example.org/"))) .
+        ?originalOntoClassURI lotl:rel-Conceptual-isSpecializationOf ?originalMappedClassURI .
+        FILTER (!(STRSTARTS(STR(?originalMappedClassURI), "http://hub.laces.tech/digitalbuildingdata/ils-o-en-e/production/poc-bsdd-publicatie/")
+               || STRSTARTS(STR(?originalMappedClassURI), "http://www.example.org/"))) .
         BIND ("IsChildOf" AS ?mappedClassRelation) . # in Laces: "isSpecializationOf"
         BIND (rdfs:subClassOf AS ?mappedClassRelationURI) .
       } UNION {
-        ?mappedClassURI lotl:rel-Conceptual-isSpecializationOf ?ontoClassURI .
-        FILTER (!(STRSTARTS(STR(?mappedClassURI), "http://hub.laces.tech/digitalbuildingdata/ils-o-en-e/production/poc-bsdd-publicatie/")
-               || STRSTARTS(STR(?mappedClassURI), "http://www.example.org/"))) .
+        ?originalMappedClassURI lotl:rel-Conceptual-isSpecializationOf ?originalOntoClassURI .
+        FILTER (!(STRSTARTS(STR(?originalMappedClassURI), "http://hub.laces.tech/digitalbuildingdata/ils-o-en-e/production/poc-bsdd-publicatie/")
+               || STRSTARTS(STR(?originalMappedClassURI), "http://www.example.org/"))) .
         BIND ("IsParentOf" AS ?mappedClassRelation) . # in Laces: "isGeneralizationOf"
         BIND (URI(CONCAT(STR(owl:inverseOf),":",STR(rdfs:subClassOf))) AS ?mappedClassRelationURI) .
       }
   }}
+  
+# If needed, create new URI by replacing the URL. 
+  BIND(IRI(REPLACE(STR(?originalOntoClassURI), "http://www.example.org/", "https://identifier.buildingsmart.org/uri/volkerwesselsbvgo/basis_bouwproducten_oene/0.1/class/")) AS ?ontoClassURI) .
+
+# If needed, create new originalMappedClassURI by replacing the URL. 
+  BIND(IRI(REPLACE(STR(?originalMappedClassURI), "https://identifier.buildingsmart.org/uri/buildingsmart/ifc-4.3/class/", "https://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/")) AS ?mappedClassURI) .
+ 
+# If needed, create new originalOntoPropertyURI by replacing the URL. 
+  BIND(IRI(REPLACE(STR(?originalOntoPropertyURI), "https://identifier.buildingsmart.org/uri/buildingsmart/ifc-4.3/class/", "https://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/")) AS ?OntoPropertyURI) .
+ 
+# If needed, create new originalOntoParentClass by replacing the URL. 
+  BIND(IRI(REPLACE(STR(?originalOntoParentClass), "https://identifier.buildingsmart.org/uri/buildingsmart/ifc-4.3/class/", "https://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/")) AS ?OntoParentClass) .
+
 }
