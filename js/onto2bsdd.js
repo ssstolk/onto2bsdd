@@ -7,9 +7,10 @@ class Onto2bsdd {
          - ontoClassPrefLabel
          - ontoClassURI
          - ontoClassDefinition
-          - ifcClassLabel
-          - ifcClassURI
-          - ontoParentClassPrefLabel
+         - mappedClassRelation
+         - mappedClassRelationURI (unused)
+         - mappedClassURI
+         - ontoParentClassPrefLabel (unused)
          - ontoParentClass
          - ontoPropertyURI
          - ontoPropertyPrefLabel
