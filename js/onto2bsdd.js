@@ -37,7 +37,7 @@ class Onto2bsdd {
       const ontoClassURI = csvObject.ontoClassURI;
       const ontoParentClass = csvObject.ontoParentClass;
       const ontoPropertyURI = csvObject.ontoPropertyURI;
-      
+
       // const classCode = csvObject.ontoClassPrefLabel
       // .replace(/[#%\/\:\{\}\[\]\|;<>?`~\s]/g, "")
       // .toLowerCase(),
@@ -95,25 +95,26 @@ class Onto2bsdd {
           PropertySet: result.DictionaryCode,
           PropertyType: "Property",
         };
-        if (ontoPropertyURI.includes(dictionaryUri)) {
+        if (!Onto2bsdd.isInBsddNamespace(ontoPropertyURI)) {
           classProperty.OwnedUri = ontoPropertyURI;
-        } else {
-          classProperty.OwnedUri =
-            dictionaryUri + "class-property-fake-uri-404";
         }
         resultClassificationObject.ClassProperties.push(classProperty);
       }
 
-      if (csvObject.mappedClassURI && csvObject.mappedClassRelation) {
+      // Only add class relations if the related class is in the bSDD namespace
+      // because we don't know the URI of the related class on bSDD
+      // if we do have that information we can also add the OwnedUri property
+      if (
+        Onto2bsdd.isInBsddNamespace(csvObject.mappedClassURI) &&
+        csvObject.mappedClassRelation
+      ) {
         const classRelation = {
           RelationType: csvObject.mappedClassRelation,
           RelatedClassUri: csvObject.mappedClassURI,
         };
-        if (csvObject.mappedClassURI.includes(dictionaryUri)) {
-          classRelation.OwnedUri = csvObject.mappedClassURI;
-        } else {
-          classRelation.OwnedUri = dictionaryUri + "fake-uri-404";
-        }
+        // if (!Onto2bsdd.isInBsddNamespace(csvObject.mappedClassURI)) {
+        //   classRelation.OwnedUri = csvObject.mappedClassURI;
+        // }
 
         // switch (csvObject.mappedClassRelation) {
         //   case "isSpecializationOf":
@@ -138,6 +139,10 @@ class Onto2bsdd {
 
     Onto2bsdd.pruneInternalReferences(result);
     return JSON.stringify(result, null, 2);
+  }
+
+  static isInBsddNamespace(uri) {
+    return uri.startsWith("https://identifier.buildingsmart.org/");
   }
 
   static getLocalname(uri) {
