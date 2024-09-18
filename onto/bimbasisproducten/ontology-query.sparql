@@ -65,7 +65,7 @@ WHERE {
   }}
   
 # If needed, create new URI by replacing the URL. 
-  BIND(IRI(REPLACE(STR(?originalOntoClassURI), "http://www.example.org/", "https://identifier.buildingsmart.org/uri/volkerwesselsbvgo/basis_bouwproducten_oene/0.1/class/")) AS ?ontoClassURI) .
+  BIND(IRI(REPLACE(STR(?originalOntoClassURI), "http://www.example.org/", "https://digitalbuildingdata.tech/ils_oene/basis_bouwproducten_oene/0.1/class/")) AS ?ontoClassURI) .
 
 # If needed, create new originalMappedClassURI by replacing the URL. 
   BIND(IRI(REPLACE(STR(?originalMappedClassURI), "https://identifier.buildingsmart.org/uri/buildingsmart/ifc-4.3/class/", "https://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/")) AS ?mappedClassURI) .
@@ -75,7 +75,7 @@ WHERE {
     IF(
       STRSTARTS(STR(?originalOntoPropertyURI), "https://identifier.buildingsmart.org/uri/buildingsmart/ifc-4.3/prop/"),
       REPLACE(STR(?originalOntoPropertyURI), "https://identifier.buildingsmart.org/uri/buildingsmart/ifc-4.3/prop/", "https://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3/prop/"),
-      REPLACE(STR(?originalOntoPropertyURI), "http://www.example.org/", "https://identifier.buildingsmart.org/uri/volkerwesselsbvgo/basis_bouwproducten_oene/0.1/prop/")
+      REPLACE(STR(?originalOntoPropertyURI), "http://www.example.org/", "https://digitalbuildingdata.tech/ils_oene/basis_bouwproducten_oene/0.1/prop/")
     )
   ) AS ?ontoPropertyURI) .
  
@@ -84,7 +84,7 @@ WHERE {
     IF(
       STRSTARTS(STR(?originalOntoParentClass), "https://identifier.buildingsmart.org/uri/buildingsmart/ifc-4.3/class/"),
       REPLACE(STR(?originalOntoParentClass), "https://identifier.buildingsmart.org/uri/buildingsmart/ifc-4.3/class/", "https://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/"),
-      REPLACE(STR(?originalOntoParentClass), "http://www.example.org/", "https://identifier.buildingsmart.org/uri/volkerwesselsbvgo/basis_bouwproducten_oene/0.1/class/")
+      REPLACE(STR(?originalOntoParentClass), "http://www.example.org/", "https://digitalbuildingdata.tech/ils_oene/basis_bouwproducten_oene/0.1/class/")
     )
   ) AS ?ontoParentClass) .
 }

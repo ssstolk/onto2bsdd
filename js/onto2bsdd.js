@@ -1,6 +1,8 @@
 /* SPDX-License-Identifier: Apache-2.0
    Copyright © 2023 Sander Stolk */
 
+const BSDD_NAMESPACE = "https://identifier.buildingsmart.org/";
+
 class Onto2bsdd {
   /* Transforms input CSV content to bSDD in its JSON import model format.
          The CSV content is expected to have a header with the following columns:
@@ -50,14 +52,18 @@ class Onto2bsdd {
           Definition: csvObject.ontoClassDefinition,
           Name: csvObject.ontoClassPrefLabel,
           OwnedUri: csvObject.ontoClassURI,
-          ParentClassCode: Onto2bsdd.codeFromName(
-            Onto2bsdd.getLocalname(csvObject.ontoParentClass)
-          ),
           // RelatedIfcEntityNamesList: [csvObject.ifcClassLabel],
           Status: "Preview",
           ClassRelations: [],
           ClassProperties: [],
         };
+
+        if (csvObject.ontoParentClass) {
+          resultClassificationObject.ParentClassCode = Onto2bsdd.codeFromName(
+            Onto2bsdd.getLocalname(csvObject.ontoParentClass)
+          );
+        }
+
         resultClassifications.push(resultClassificationObject);
       }
 
@@ -95,7 +101,13 @@ class Onto2bsdd {
           PropertySet: result.DictionaryCode,
           PropertyType: "Property",
         };
-        if (!Onto2bsdd.isInBsddNamespace(csvObject.ontoPropertyURI)) {
+        if (Onto2bsdd.isInBsddNamespace(csvObject.mappedClassURI)) {
+          Onto2bsdd.combineUris(
+            resultPropertyObject.Code,
+            csvObject.ontoPropertyURI,
+            "prop"
+          );
+        } else {
           classProperty.OwnedUri = csvObject.ontoPropertyURI;
         }
         resultClassificationObject.ClassProperties.push(classProperty);
@@ -112,23 +124,16 @@ class Onto2bsdd {
           RelationType: csvObject.mappedClassRelation,
           RelatedClassUri: csvObject.mappedClassURI,
         };
-        // if (!Onto2bsdd.isInBsddNamespace(csvObject.mappedClassURI)) {
-        //   classRelation.OwnedUri = csvObject.mappedClassURI;
-        // }
 
-        // switch (csvObject.mappedClassRelation) {
-        //   case "isSpecializationOf":
-        //     resultIfcRelationObject.RelationType = "IsChildOf";
-        //     break;
-        //   case "isGeneralizationOf":
-        //     resultIfcRelationObject.RelationType = "IsParentOf";
-        //     break;
-        //   case "isRelatedTo":
-        //     resultIfcRelationObject.RelationType = "HasReference";
-        //     break;
-        //   default:
-        //     break;
-        // }
+        if (Onto2bsdd.isInBsddNamespace(csvObject.mappedClassURI)) {
+          classRelation.OwnedUri = Onto2bsdd.combineUris(
+            csvObject.mappedClassURI,
+            csvObject.ontoClassURI,
+            "relclass"
+          );
+        } else {
+          classRelation.OwnedUri = csvObject.mappedClassURI;
+        }
         resultClassificationObject.ClassRelations.push(classRelation);
       }
     }
@@ -139,6 +144,28 @@ class Onto2bsdd {
 
     Onto2bsdd.pruneInternalReferences(result);
     return JSON.stringify(result, null, 2);
+  }
+
+  /**
+   * Combines a base URI with another URI and a specified URI type segment.
+   * It cleans the URI and constructs a combined URI.
+   *
+   * @param {string} uri - The URI to be appended.
+   * @param {string} baseUri - The base URI to which the other URI will be appended.
+   * @param {string} [uriType='relclass'] - The URI type segment that links both URIs.
+   * @returns {string} - The combined URI.
+   */
+  static combineUris(uri, baseUri, uriType = "relclass") {
+    const cleanedUri = uri
+      .replace(BSDD_NAMESPACE, "")
+      .replace(/^https?:\/\//, "");
+
+    const combinedUri = [baseUri, uriType, cleanedUri]
+      .join("/")
+      .replace(/\/{2,}/g, "/")
+      .replace(":/", "://");
+
+    return combinedUri;
   }
 
   /**
@@ -166,10 +193,11 @@ class Onto2bsdd {
    * Checks if a given URI is within the buildingsmart namespace.
    *
    * @param {string} uri - The URI to check.
-   * @returns {boolean} - Returns true if the URI starts with "https://identifier.buildingsmart.org/", otherwise false.
+   * @returns {boolean} - Returns true if the URI starts with BSDD_NAMESPACE, otherwise false.
    */
   static isInBsddNamespace(uri) {
-    return uri.startsWith("https://identifier.buildingsmart.org/");
+    if (typeof uri !== "string") return false;
+    return uri.startsWith(BSDD_NAMESPACE);
   }
 
   /**
