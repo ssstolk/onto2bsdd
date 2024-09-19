@@ -81,9 +81,7 @@ class Onto2bsdd {
               ? "Time"
               : "String";
           resultPropertyObject = {
-            Code: Onto2bsdd.codeFromName(
-              Onto2bsdd.getLocalname(csvObject.ontoPropertyURI)
-            ),
+            Code: Onto2bsdd.codeFromName(csvObject.ontoPropertyPrefLabel),
             DataType: bsddDatatype,
             Definition: csvObject.ontoPropertyDefinition,
             Name: csvObject.ontoPropertyPrefLabel,
@@ -97,7 +95,7 @@ class Onto2bsdd {
             resultClassificationObject.Code + "-" + resultPropertyObject.Code
           ),
           PropertyCode: resultPropertyObject.Code,
-          Uid: resultPropertyObject.Code,
+          Uid: Onto2bsdd.getLocalname(resultPropertyObject.OwnedUri),
           PropertySet: result.DictionaryCode,
           PropertyType: "Property",
         };
