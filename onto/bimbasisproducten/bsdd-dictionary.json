@@ -3,12 +3,14 @@
   "DictionaryCode": "basisbouwproducten_demo",
   "DictionaryVersion": "0.1",
   "DictionaryName": "Basis bouwproducten demo",
-  "ReleaseDate": "2024-03-06T19:30:42.789Z",
+  "ReleaseDate": "2024-09-19T09:00:00.00Z",
   "Status": "Preview",
+  "ChangeRequestEmailAddress": "svschaijk@DigiBase.nl",
   "UseOwnUri": true,
   "DictionaryUri": "http://hub.laces.tech/digitalbuildingdata/ils-o-en-e/development/poc-ils-oene-bsdd/",
   "LanguageIsoCode": "nl-NL",
-  "License": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
+  "License": "CC BY-ND 4.0",
+  "LicenseUrl": "https://creativecommons.org/licenses/by-nd/4.0/legalcode",
   "QualityAssuranceProcedure": "This content is in draft and still under development. Do not use this as final content",
   "ModelVersion": "2.0",
   "Classes": [
@@ -17,35 +19,50 @@
       "Code": "ad759c79-14ba-4fd5-9683-7983acb9c35e",
       "Definition": "",
       "Name": "Breedplaatvloer",
-      "OwnedUri": "https://identifier.buildingsmart.org/uri/volkerwesselsbvgo/basis_bouwproducten_oene/0.1/class/ad759c79-14ba-4fd5-9683-7983acb9c35e",
-      "ParentClassCode": "6ed19d7b-aa92-4ae5-a610-cb007299fbfe",
+      "OwnedUri": "https://digitalbuildingdata.tech/ils_oene/basis_bouwproducten_oene/0.1/class/ad759c79-14ba-4fd5-9683-7983acb9c35e",
       "Status": "Preview",
       "ClassRelations": [
         {
           "RelationType": "IsParentOf",
-          "RelatedClassUri": "https://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/IfcSlabROOF"
+          "RelatedClassUri": "https://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/IfcSlabROOF",
+          "OwnedUri": "https://digitalbuildingdata.tech/ils_oene/basis_bouwproducten_oene/0.1/class/ad759c79-14ba-4fd5-9683-7983acb9c35e/relclass/uri/buildingsmart/ifc/4.3/class/IfcSlabROOF"
         },
         {
           "RelationType": "IsParentOf",
-          "RelatedClassUri": "https://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/IfcSlabFLOOR"
+          "RelatedClassUri": "https://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/IfcSlabFLOOR",
+          "OwnedUri": "https://digitalbuildingdata.tech/ils_oene/basis_bouwproducten_oene/0.1/class/ad759c79-14ba-4fd5-9683-7983acb9c35e/relclass/uri/buildingsmart/ifc/4.3/class/IfcSlabFLOOR"
         }
       ],
       "ClassProperties": [
         {
-          "Code": "8ff194db9761d3c7f3f5a350f35e656a",
-          "PropertyCode": "e10cf3a9-4aa4-494b-9884-c15b0830a223",
-          "PropertyType": "Property"
+          "Code": "8ff194db-9761-d3c7-f3f5-a350f35e656a",
+          "PropertyCode": "Brandwerendheid",
+          "Uid": "e10cf3a9-4aa4-494b-9884-c15b0830a223",
+          "PropertySet": "basisbouwproducten_demo",
+          "PropertyType": "Property",
+          "OwnedUri": "https://digitalbuildingdata.tech/ils_oene/basis_bouwproducten_oene/0.1/prop/e10cf3a9-4aa4-494b-9884-c15b0830a223/prop/8ff194db-9761-d3c7-f3f5-a350f35e656a"
         },
         {
-          "Code": "f0ee782578b7ee5bde35ce45255b4bfe",
-          "PropertyCode": "e9eadb93-2b12-4726-9c0e-62d030d20399",
-          "PropertyType": "Property"
+          "Code": "647ab9c4-f8e5-b1f8-ca92-5a378aa000ac",
+          "PropertyCode": "Massa",
+          "Uid": "1c3156f6-f68e-4d6f-b947-8500bde9e6a2",
+          "PropertySet": "basisbouwproducten_demo",
+          "PropertyType": "Property",
+          "OwnedUri": "https://digitalbuildingdata.tech/ils_oene/basis_bouwproducten_oene/0.1/prop/1c3156f6-f68e-4d6f-b947-8500bde9e6a2/prop/647ab9c4-f8e5-b1f8-ca92-5a378aa000ac"
         },
         {
-          "Code": "647ab9c4f8e5b1f8ca925a378aa000ac",
-          "PropertyCode": "1c3156f6-f68e-4d6f-b947-8500bde9e6a2",
-          "PropertyType": "Property"
+          "Code": "f0ee7825-78b7-ee5b-de35-ce45255b4bfe",
+          "PropertyCode": "Bouwlaag",
+          "Uid": "e9eadb93-2b12-4726-9c0e-62d030d20399",
+          "PropertySet": "basisbouwproducten_demo",
+          "PropertyType": "Property",
+          "OwnedUri": "https://digitalbuildingdata.tech/ils_oene/basis_bouwproducten_oene/0.1/prop/e9eadb93-2b12-4726-9c0e-62d030d20399/prop/f0ee7825-78b7-ee5b-de35-ce45255b4bfe"
         }
+      ],
+      "ParentClassCode": "6ed19d7b-aa92-4ae5-a610-cb007299fbfe",
+      "RelatedIfcEntityNamesList": [
+        "IfcSlabROOF",
+        "IfcSlabFLOOR"
       ]
     },
     {
@@ -53,7 +70,7 @@
       "Code": "c2c78a4e-0d5c-4129-884f-3f855746924e",
       "Definition": "",
       "Name": "32.3* - Binnenwandopeningen; gevuld met deuren",
-      "OwnedUri": "https://identifier.buildingsmart.org/uri/volkerwesselsbvgo/basis_bouwproducten_oene/0.1/class/c2c78a4e-0d5c-4129-884f-3f855746924e",
+      "OwnedUri": "https://digitalbuildingdata.tech/ils_oene/basis_bouwproducten_oene/0.1/class/c2c78a4e-0d5c-4129-884f-3f855746924e",
       "Status": "Preview",
       "ClassRelations": [],
       "ClassProperties": []
@@ -63,62 +80,75 @@
       "Code": "f159581b-d53e-4e84-ae1c-60434d3b803a",
       "Definition": "",
       "Name": "Binnendeur",
-      "OwnedUri": "https://identifier.buildingsmart.org/uri/volkerwesselsbvgo/basis_bouwproducten_oene/0.1/class/f159581b-d53e-4e84-ae1c-60434d3b803a",
-      "ParentClassCode": "c2c78a4e-0d5c-4129-884f-3f855746924e",
+      "OwnedUri": "https://digitalbuildingdata.tech/ils_oene/basis_bouwproducten_oene/0.1/class/f159581b-d53e-4e84-ae1c-60434d3b803a",
       "Status": "Preview",
       "ClassRelations": [
         {
           "RelationType": "IsParentOf",
-          "RelatedClassUri": "https://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/IfcDoorDOOR"
+          "RelatedClassUri": "https://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/IfcDoorDOOR",
+          "OwnedUri": "https://digitalbuildingdata.tech/ils_oene/basis_bouwproducten_oene/0.1/class/f159581b-d53e-4e84-ae1c-60434d3b803a/relclass/uri/buildingsmart/ifc/4.3/class/IfcDoorDOOR"
         }
       ],
-      "ClassProperties": []
+      "ClassProperties": [],
+      "ParentClassCode": "c2c78a4e-0d5c-4129-884f-3f855746924e",
+      "RelatedIfcEntityNamesList": [
+        "IfcDoorDOOR"
+      ]
     },
     {
       "ClassType": "Class",
       "Code": "6ed19d7b-aa92-4ae5-a610-cb007299fbfe",
       "Definition": "",
       "Name": "23.2* - Vloeren; Constructief",
-      "OwnedUri": "https://identifier.buildingsmart.org/uri/volkerwesselsbvgo/basis_bouwproducten_oene/0.1/class/6ed19d7b-aa92-4ae5-a610-cb007299fbfe",
+      "OwnedUri": "https://digitalbuildingdata.tech/ils_oene/basis_bouwproducten_oene/0.1/class/6ed19d7b-aa92-4ae5-a610-cb007299fbfe",
       "Status": "Preview",
       "ClassRelations": [],
       "ClassProperties": [
         {
-          "Code": "1dd20c18dde58e2831bf40972d2d47e9",
-          "PropertyCode": "e10cf3a9-4aa4-494b-9884-c15b0830a223",
-          "PropertyType": "Property"
+          "Code": "0d4a9ecd-b3f9-0f97-496e-d52d5a2d25f0",
+          "PropertyCode": "Massa",
+          "Uid": "1c3156f6-f68e-4d6f-b947-8500bde9e6a2",
+          "PropertySet": "basisbouwproducten_demo",
+          "PropertyType": "Property",
+          "OwnedUri": "https://digitalbuildingdata.tech/ils_oene/basis_bouwproducten_oene/0.1/prop/1c3156f6-f68e-4d6f-b947-8500bde9e6a2/prop/0d4a9ecd-b3f9-0f97-496e-d52d5a2d25f0"
         },
         {
-          "Code": "0d4a9ecdb3f90f97496ed52d5a2d25f0",
-          "PropertyCode": "1c3156f6-f68e-4d6f-b947-8500bde9e6a2",
-          "PropertyType": "Property"
+          "Code": "1dd20c18-dde5-8e28-31bf-40972d2d47e9",
+          "PropertyCode": "Brandwerendheid",
+          "Uid": "e10cf3a9-4aa4-494b-9884-c15b0830a223",
+          "PropertySet": "basisbouwproducten_demo",
+          "PropertyType": "Property",
+          "OwnedUri": "https://digitalbuildingdata.tech/ils_oene/basis_bouwproducten_oene/0.1/prop/e10cf3a9-4aa4-494b-9884-c15b0830a223/prop/1dd20c18-dde5-8e28-31bf-40972d2d47e9"
         },
         {
-          "Code": "1bb9c4446d873947647d2bc23457b3d1",
-          "PropertyCode": "e9eadb93-2b12-4726-9c0e-62d030d20399",
-          "PropertyType": "Property"
+          "Code": "1bb9c444-6d87-3947-647d-2bc23457b3d1",
+          "PropertyCode": "Bouwlaag",
+          "Uid": "e9eadb93-2b12-4726-9c0e-62d030d20399",
+          "PropertySet": "basisbouwproducten_demo",
+          "PropertyType": "Property",
+          "OwnedUri": "https://digitalbuildingdata.tech/ils_oene/basis_bouwproducten_oene/0.1/prop/e9eadb93-2b12-4726-9c0e-62d030d20399/prop/1bb9c444-6d87-3947-647d-2bc23457b3d1"
         }
       ]
     }
   ],
   "Properties": [
     {
-      "Code": "e10cf3a9-4aa4-494b-9884-c15b0830a223",
+      "Code": "Brandwerendheid",
       "DataType": "String",
       "Name": "Brandwerendheid",
-      "OwnedUri": "https://identifier.buildingsmart.org/uri/volkerwesselsbvgo/basis_bouwproducten_oene/0.1/prop/e10cf3a9-4aa4-494b-9884-c15b0830a223"
+      "OwnedUri": "https://digitalbuildingdata.tech/ils_oene/basis_bouwproducten_oene/0.1/prop/e10cf3a9-4aa4-494b-9884-c15b0830a223"
     },
     {
-      "Code": "e9eadb93-2b12-4726-9c0e-62d030d20399",
-      "DataType": "String",
-      "Name": "Bouwlaag",
-      "OwnedUri": "https://identifier.buildingsmart.org/uri/volkerwesselsbvgo/basis_bouwproducten_oene/0.1/prop/e9eadb93-2b12-4726-9c0e-62d030d20399"
-    },
-    {
-      "Code": "1c3156f6-f68e-4d6f-b947-8500bde9e6a2",
+      "Code": "Massa",
       "DataType": "String",
       "Name": "Massa",
-      "OwnedUri": "https://identifier.buildingsmart.org/uri/volkerwesselsbvgo/basis_bouwproducten_oene/0.1/prop/1c3156f6-f68e-4d6f-b947-8500bde9e6a2"
+      "OwnedUri": "https://digitalbuildingdata.tech/ils_oene/basis_bouwproducten_oene/0.1/prop/1c3156f6-f68e-4d6f-b947-8500bde9e6a2"
+    },
+    {
+      "Code": "Bouwlaag",
+      "DataType": "String",
+      "Name": "Bouwlaag",
+      "OwnedUri": "https://digitalbuildingdata.tech/ils_oene/basis_bouwproducten_oene/0.1/prop/e9eadb93-2b12-4726-9c0e-62d030d20399"
     }
   ]
 }
