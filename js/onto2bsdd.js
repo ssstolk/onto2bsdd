@@ -2,6 +2,8 @@
    Copyright © 2023 Sander Stolk */
 
 const BSDD_NAMESPACE = "https://identifier.buildingsmart.org/";
+const BSDD_IFC_NAMESPACE =
+  "https://identifier.buildingsmart.org/uri/buildingsmart/ifc";
 
 class Onto2bsdd {
   /* Transforms input CSV content to bSDD in its JSON import model format.
@@ -137,6 +139,17 @@ class Onto2bsdd {
           classRelation.OwnedUri = csvObject.mappedClassURI;
         }
         resultClassificationObject.ClassRelations.push(classRelation);
+      }
+
+      // Add related IFC entity names to the classification object
+      const relatedIfcEntityNamesList =
+        resultClassificationObject.ClassRelations.filter((relation) =>
+          relation.RelatedClassUri.startsWith(BSDD_IFC_NAMESPACE)
+        ).map((relation) => relation.RelatedClassUri.split("/").pop());
+
+      if (relatedIfcEntityNamesList.length > 0) {
+        resultClassificationObject.RelatedIfcEntityNamesList =
+          relatedIfcEntityNamesList;
       }
     }
 
