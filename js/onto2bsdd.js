@@ -83,24 +83,23 @@ class Onto2bsdd {
               : "String";
           resultPropertyObject = {
             Code: Onto2bsdd.codeFromName(csvObject.ontoPropertyPrefLabel),
-            DataType: bsddDatatype,
-            Definition: csvObject.ontoPropertyDefinition,
             Name: csvObject.ontoPropertyPrefLabel,
+            Definition: csvObject.ontoPropertyDefinition,
+            DataType: bsddDatatype,
             OwnedUri: csvObject.ontoPropertyURI,
+            Uid: Onto2bsdd.getLocalname(
+              csvObject.ontoPropertyURI
+            ),
           };
           resultProperties.push(resultPropertyObject);
         }
-        const propertyUri = Onto2bsdd.getLocalname(
-          resultPropertyObject.OwnedUri
-        );
         const classPropertyCode = Onto2bsdd.generateFormattedUUID(
           resultClassificationObject.Code,
-          propertyUri
+          resultPropertyObject.Uid
         );
         const classProperty = {
           Code: classPropertyCode,
           PropertyCode: resultPropertyObject.Code,
-          Uid: propertyUri,
           PropertySet: result.DictionaryCode,
           PropertyType: "Property",
         };
@@ -281,11 +280,11 @@ class Onto2bsdd {
 
   static pruneInternalReferences(result) {
     for (const classification of result.Classes) {
-       if (
-         !Onto2bsdd.isPresent(classification.ParentClassCode, result.Classes)
-       ) {
-         classification.ParentClassCode = undefined;
-       }
+      if (
+        !Onto2bsdd.isPresent(classification.ParentClassCode, result.Classes)
+      ) {
+        classification.ParentClassCode = undefined;
+      }
       for (const classificationProperty of classification.ClassProperties) {
         if (
           !Onto2bsdd.isPresent(
