@@ -7,23 +7,23 @@ const BSDD_IFC_NAMESPACE =
 
 class Onto2bsdd {
   /* Transforms input CSV content to bSDD in its JSON import model format.
-         The CSV content is expected to have a header with the following columns:
-         - ontoClassPrefLabel
-         - ontoClassURI
-         - ontoClassDefinition
-         - mappedClassRelation
-         - mappedClassRelationURI (unused)
-         - mappedClassURI
-         - ontoParentClassPrefLabel (unused)
-         - ontoParentClass
-         - ontoPropertyURI
-         - ontoPropertyPrefLabel
-         - ontoPropertyDatatypeLabel
-         - ontoPropertyDatatype         
-
-         For documentation on the bSDD import model, see: 
-         https://github.com/buildingSMART/bSDD/blob/master/Documentation/bSDD%20JSON%20import%20model.md .
-      */
+            The CSV content is expected to have a header with the following columns:
+            - ontoClassPrefLabel
+            - ontoClassURI
+            - ontoClassDefinition
+            - mappedClassRelation
+            - mappedClassRelationURI (unused)
+            - mappedClassURI
+            - ontoParentClassPrefLabel (unused)
+            - ontoParentClass
+            - ontoPropertyURI
+            - ontoPropertyPrefLabel
+            - ontoPropertyDatatypeLabel
+            - ontoPropertyDatatype         
+   
+            For documentation on the bSDD import model, see: 
+            https://github.com/buildingSMART/bSDD/blob/master/Documentation/bSDD%20JSON%20import%20model.md .
+         */
   static fromCSV(input, header = {}) {
     const csvObjects = $.csv.toObjects(input); // see https://github.com/evanplaice/jquery-csv/#documentation
     console.log(JSON.stringify(csvObjects));
@@ -54,7 +54,6 @@ class Onto2bsdd {
           Definition: csvObject.ontoClassDefinition,
           Name: csvObject.ontoClassPrefLabel,
           OwnedUri: csvObject.ontoClassURI,
-          // RelatedIfcEntityNamesList: [csvObject.ifcClassLabel],
           Status: "Preview",
           ClassRelations: [],
           ClassProperties: [],
@@ -91,9 +90,12 @@ class Onto2bsdd {
           };
           resultProperties.push(resultPropertyObject);
         }
-        const propertyUri = Onto2bsdd.getLocalname(resultPropertyObject.OwnedUri);
-        const classPropertyCode = md5(
-          resultClassificationObject.Code + "-" + propertyUri
+        const propertyUri = Onto2bsdd.getLocalname(
+          resultPropertyObject.OwnedUri
+        );
+        const classPropertyCode = Onto2bsdd.generateFormattedUUID(
+          resultClassificationObject.Code,
+          propertyUri
         );
         const classProperty = {
           Code: classPropertyCode,
@@ -163,6 +165,40 @@ class Onto2bsdd {
   }
 
   /**
+   * Generates a formatted UUID based on the MD5 hash of the concatenation
+   * of the classification code and property URI.
+   *
+   * @param {string} classificationCode - The code of the classification object.
+   * @param {string} propertyUri - The URI of the property.
+   * @returns {string} The formatted UUID.
+   * @throws {TypeError} If the input parameters are not strings.
+   */
+  static generateFormattedUUID(classificationCode, propertyUri) {
+    if (
+      typeof classificationCode !== "string" ||
+      typeof propertyUri !== "string"
+    ) {
+      throw new TypeError(
+        "Both classificationCode and propertyUri must be strings"
+      );
+    }
+
+    // Concatenate classificationCode and propertyUri with a hyphen
+    const concatenatedString = `${classificationCode}-${propertyUri}`;
+
+    // Generate the MD5 hash of the concatenated string
+    const hash = md5(concatenatedString);
+
+    // Format hash as a UUID
+    const formattedUUID = `${hash.slice(0, 8)}-${hash.slice(
+      8,
+      12
+    )}-${hash.slice(12, 16)}-${hash.slice(16, 20)}-${hash.slice(20)}`;
+
+    return formattedUUID;
+  }
+
+  /**
    * Combines a base URI with another URI and a specified URI type segment.
    * It cleans the URI and constructs a combined URI.
    *
@@ -188,7 +224,7 @@ class Onto2bsdd {
    * Converts a string into a valid bSDD code.
    *
    * The function replaces spaces with underscores and removes any characters
-   * that are not alphanumeric, underscores, or hyphens.
+   * that are not alphanumeric, diacritics, underscores, hyphens, dots, or whitespace.
    *
    * @param {string} name - The string to convert into a valid bSDD code.
    * @returns {string} The converted bSDD code.
@@ -200,7 +236,8 @@ class Onto2bsdd {
     }
 
     let code = name.replace(/ /g, "_");
-    code = code.replace(/[^a-zA-Z0-9_-]/g, "");
+    const allowedChars = /[^a-zA-Z0-9\s._-À-ž]/g;
+    code = code.replace(allowedChars, "");
 
     return code;
   }
@@ -244,11 +281,11 @@ class Onto2bsdd {
 
   static pruneInternalReferences(result) {
     for (const classification of result.Classes) {
-      if (
-        !Onto2bsdd.isPresent(classification.ParentClassCode, result.Classes)
-      ) {
-        classification.ParentClassCode = undefined;
-      }
+       if (
+         !Onto2bsdd.isPresent(classification.ParentClassCode, result.Classes)
+       ) {
+         classification.ParentClassCode = undefined;
+       }
       for (const classificationProperty of classification.ClassProperties) {
         if (
           !Onto2bsdd.isPresent(
