@@ -89,24 +89,28 @@ class Onto2bsdd {
           };
           resultProperties.push(resultPropertyObject);
         }
-
+        const classPropertyCode = md5(
+          resultClassificationObject.Code + "-" + resultPropertyObject.Code
+        );
         const classProperty = {
-          Code: md5(
-            resultClassificationObject.Code + "-" + resultPropertyObject.Code
-          ),
+          Code: classPropertyCode,
           PropertyCode: resultPropertyObject.Code,
           Uid: Onto2bsdd.getLocalname(resultPropertyObject.OwnedUri),
           PropertySet: result.DictionaryCode,
           PropertyType: "Property",
         };
-        if (Onto2bsdd.isInBsddNamespace(csvObject.mappedClassURI)) {
-          Onto2bsdd.combineUris(
+        if (Onto2bsdd.isInBsddNamespace(csvObject.ontoPropertyURI)) {
+          classProperty.OwnedUri = Onto2bsdd.combineUris(
             resultPropertyObject.Code,
             csvObject.ontoPropertyURI,
             "prop"
           );
         } else {
-          classProperty.OwnedUri = csvObject.ontoPropertyURI;
+          classProperty.OwnedUri = Onto2bsdd.combineUris(
+            classPropertyCode,
+            csvObject.ontoPropertyURI,
+            "prop"
+          );
         }
         resultClassificationObject.ClassProperties.push(classProperty);
       }
