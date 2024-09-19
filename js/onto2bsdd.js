@@ -91,13 +91,14 @@ class Onto2bsdd {
           };
           resultProperties.push(resultPropertyObject);
         }
+        const propertyUri = Onto2bsdd.getLocalname(resultPropertyObject.OwnedUri);
         const classPropertyCode = md5(
-          resultClassificationObject.Code + "-" + resultPropertyObject.Code
+          resultClassificationObject.Code + "-" + propertyUri
         );
         const classProperty = {
           Code: classPropertyCode,
           PropertyCode: resultPropertyObject.Code,
-          Uid: Onto2bsdd.getLocalname(resultPropertyObject.OwnedUri),
+          Uid: propertyUri,
           PropertySet: result.DictionaryCode,
           PropertyType: "Property",
         };
