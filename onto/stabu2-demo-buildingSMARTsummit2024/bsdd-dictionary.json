@@ -1,0 +1,49 @@
+{
+  "OrganizationCode": "volkerwesselsbvgo",
+  "DictionaryCode": "stabu2_demo",
+  "DictionaryVersion": "0.1",
+  "DictionaryName": "STABU2 demo",
+  "ReleaseDate": "2024-03-06T19:18:56.808Z",
+  "Status": "Preview",
+  "UseOwnUri": true,
+  "DictionaryUri": "http://hub.laces.tech/ketenstandaard/linked-data-pilot/stabu2/",
+  "LanguageIsoCode": "nl-NL",
+  "License": "This is a limited subset of content, shared with permission from Ketenstandaard, solely for the purpose of demonstration.",
+  "QualityAssuranceProcedure": "This content is in draft and still under development. Do not use this as final content",
+  "ModelVersion": "2.0",
+  "Classes": [
+    {
+      "ClassType": "Class",
+      "Code": "e63734fc-9a20-3472-a3cc-a3ca7fed7567",
+      "Definition": "",
+      "Name": "Korttekst",
+      "OwnedUri": "http://hub.laces.tech/ketenstandaard/linked-data-pilot/stabu2/e63734fc-9a20-3472-a3cc-a3ca7fed7567",
+      "Status": "Preview",
+      "ClassRelations": [],
+      "ClassProperties": []
+    },
+    {
+      "ClassType": "Class",
+      "Code": "909adc03-775d-36c2-bcbd-56c58930ce8c",
+      "Definition": "",
+      "Name": "30.33.11 HOUTEN DEUR",
+      "OwnedUri": "http://hub.laces.tech/ketenstandaard/linked-data-pilot/stabu2/909adc03-775d-36c2-bcbd-56c58930ce8c",
+      "ParentClassCode": "e63734fc-9a20-3472-a3cc-a3ca7fed7567",
+      "Status": "Preview",
+      "ClassRelations": [
+        {
+          "RelationType": "HasReference",
+          "RelatedClassUri": "https://identifier.buildingsmart.org/uri/etim/etim/9.0/class/EC003080",
+          "OwnedUri": "http://hub.laces.tech/ketenstandaard/linked-data-pilot/stabu2/class-relation-fake-uri-404"
+        },
+        {
+          "RelationType": "HasReference",
+          "RelatedClassUri": "https://data.etim-international.com/id/a96909a2-952a-40b3-b8ec-d7d974770d7a",
+          "OwnedUri": "http://hub.laces.tech/ketenstandaard/linked-data-pilot/stabu2/class-relation-fake-uri-404"
+        }
+      ],
+      "ClassProperties": []
+    }
+  ],
+  "Properties": []
+}

@@ -1,0 +1,119 @@
+{
+  "OrganizationCode": "volkerwesselsbvgo",
+  "DictionaryCode": "nlsfb_demo",
+  "DictionaryVersion": "0.1",
+  "DictionaryName": "NL/SfB demo",
+  "ReleaseDate": "2024-03-06T19:25:13.348Z",
+  "Status": "Preview",
+  "UseOwnUri": true,
+  "DictionaryUri": "https://digitalbuildingdata.tech/nlsfb/",
+  "LanguageIsoCode": "nl-NL",
+  "License": "This is a limited subset of content, shared with permission from Ketenstandaard, solely for the purpose of demonstration.",
+  "QualityAssuranceProcedure": "This content is in draft and still under development. Do not use this as final content",
+  "ModelVersion": "2.0",
+  "Classes": [
+    {
+      "ClassType": "Class",
+      "Code": "db056c81-6fea-34ed-9f2a-278ab8a6761f",
+      "Definition": "",
+      "Name": "(2) RUWBOUW",
+      "OwnedUri": "https://digitalbuildingdata.tech/nlsfb/db056c81-6fea-34ed-9f2a-278ab8a6761f",
+      "Status": "Preview",
+      "ClassRelations": [],
+      "ClassProperties": []
+    },
+    {
+      "ClassType": "Class",
+      "Code": "65210722-9052-35cf-b1f2-07562b6e5856",
+      "Definition": "",
+      "Name": "(32) Binnenwandopeningen",
+      "OwnedUri": "https://digitalbuildingdata.tech/nlsfb/65210722-9052-35cf-b1f2-07562b6e5856",
+      "ParentClassCode": "56c3572d-1625-394c-a87f-89155b18bb51",
+      "Status": "Preview",
+      "ClassRelations": [],
+      "ClassProperties": []
+    },
+    {
+      "ClassType": "Class",
+      "Code": "56c3572d-1625-394c-a87f-89155b18bb51",
+      "Definition": "",
+      "Name": "(3) AFBOUW",
+      "OwnedUri": "https://digitalbuildingdata.tech/nlsfb/56c3572d-1625-394c-a87f-89155b18bb51",
+      "Status": "Preview",
+      "ClassRelations": [],
+      "ClassProperties": []
+    },
+    {
+      "ClassType": "Class",
+      "Code": "c8ea5146-3737-31d4-a581-f8f69c4ed4d8",
+      "Definition": "",
+      "Name": "(23.2) vloeren; constructief",
+      "OwnedUri": "https://digitalbuildingdata.tech/nlsfb/c8ea5146-3737-31d4-a581-f8f69c4ed4d8",
+      "ParentClassCode": "1c8e14ea-851e-39ea-8caf-47b78405f849",
+      "Status": "Preview",
+      "ClassRelations": [],
+      "ClassProperties": []
+    },
+    {
+      "ClassType": "Class",
+      "Code": "b9d55ec5-2599-3a4b-8fbe-85e6da1337b7",
+      "Definition": "",
+      "Name": "(23.21) vloeren; constructief, vrijdragende vloeren",
+      "OwnedUri": "https://digitalbuildingdata.tech/nlsfb/b9d55ec5-2599-3a4b-8fbe-85e6da1337b7",
+      "ParentClassCode": "c8ea5146-3737-31d4-a581-f8f69c4ed4d8",
+      "Status": "Preview",
+      "ClassRelations": [
+        {
+          "RelationType": "IsChildOf",
+          "RelatedClassUri": "https://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/IfcSlab",
+          "OwnedUri": "https://digitalbuildingdata.tech/nlsfb/class-relation-fake-uri-404"
+        },
+        {
+          "RelationType": "IsParentOf",
+          "RelatedClassUri": "https://data.ketenstandaard.nl/stabu/9b6085ef-63a1-4fc6-bc49-122328add1a7",
+          "OwnedUri": "https://digitalbuildingdata.tech/nlsfb/class-relation-fake-uri-404"
+        },
+        {
+          "RelationType": "IsParentOf",
+          "RelatedClassUri": "https://data.ketenstandaard.nl/stabu/e8ecd18d-4077-4161-a123-a0bb8c0eaf65",
+          "OwnedUri": "https://digitalbuildingdata.tech/nlsfb/class-relation-fake-uri-404"
+        },
+        {
+          "RelationType": "IsParentOf",
+          "RelatedClassUri": "https://data.ketenstandaard.nl/stabu/7e904934-62b6-47e8-9bb8-18317ba4d173",
+          "OwnedUri": "https://digitalbuildingdata.tech/nlsfb/class-relation-fake-uri-404"
+        }
+      ],
+      "ClassProperties": []
+    },
+    {
+      "ClassType": "Class",
+      "Code": "02727c3f-75e7-341e-8ee0-450abc023009",
+      "Definition": "",
+      "Name": "(32.3) binnenwandopeningen; gevuld met deuren",
+      "OwnedUri": "https://digitalbuildingdata.tech/nlsfb/02727c3f-75e7-341e-8ee0-450abc023009",
+      "ParentClassCode": "65210722-9052-35cf-b1f2-07562b6e5856",
+      "Status": "Preview",
+      "ClassRelations": [
+        {
+          "RelationType": "IsEqualTo",
+          "RelatedClassUri": "https://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/IfcDoor",
+          "OwnedUri": "https://digitalbuildingdata.tech/nlsfb/class-relation-fake-uri-404"
+        }
+      ],
+      "ClassProperties": []
+    },
+    {
+      "ClassType": "Class",
+      "Code": "1c8e14ea-851e-39ea-8caf-47b78405f849",
+      "Definition": "",
+      "Name": "(23) Vloeren",
+      "OwnedUri": "https://digitalbuildingdata.tech/nlsfb/1c8e14ea-851e-39ea-8caf-47b78405f849",
+      "ParentClassCode": "db056c81-6fea-34ed-9f2a-278ab8a6761f",
+      "Status": "Preview",
+      "ClassRelations": [],
+      "ClassProperties": []
+    }
+  ],
+  "Properties": []
+}
