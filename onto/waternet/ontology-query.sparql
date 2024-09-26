@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: Apache-2.0
-# Copyright © 2023 Sander Stolk
+# Copyright © 2024 Sander Stolk / Wouter Lubbers
 
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX sh: <http://www.w3.org/ns/shacl#>
@@ -10,15 +10,10 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
-SELECT DISTINCT ?ontoClassPrefLabel ?ontoClassURI ?ontoClassDefinition ?ifcClassLabel ?ifcClassURI ?ontoParentClassPrefLabel ?ontoParentClass ?ontoPropertyURI ?ontoPropertyPrefLabel ?ontoPropertyDatatypeLabel ?ontoPropertyDatatype
+SELECT DISTINCT ?ontoClassPrefLabel ?ontoClassURI ?ontoClassDefinition ?mappedClassRelation ?mappedClassURI ?ontoParentClassPrefLabel ?ontoParentClass ?ontoPropertyURI ?ontoPropertyPrefLabel ?ontoPropertyDatatypeLabel ?ontoPropertyDatatype
 WHERE {
   ?ontoClassURI skos:prefLabel  ?ontoClassPrefLabel .
   FILTER (STRSTARTS(STR(?ontoClassURI), "https://otl.waternet.nl/def/")) .
-  ?mapping  skos:prefLabel  ?ontoClassPrefLabel .
-  ?mapping  skos:related    ?ifcClassURI .
-  
-  BIND (STRAFTER(STR(?ifcClassURI), "class/") AS ?ifcClassLabel) .
-  FILTER (BOUND(?ifcClassLabel) && ?ifcClassLabel !="")
   
   OPTIONAL {
     ?ontoClassURI skos:definition ?ontoClassDefinition .
@@ -27,17 +22,62 @@ WHERE {
   OPTIONAL {
     ?ontoClassURI rdfs:subClassOf ?ontoParentClass .
     ?ontoParentClass skos:prefLabel ?ontoParentClassPrefLabel .
-    FILTER (?ontoParentClass != bs:PhysicalObject) .
+    FILTER (?ontoParentClass != nen2660:RealObject) .
+  }
+  # Only objects from the W-OTL that are mapped to IFC will be considered
+  FILTER EXISTS {
+	?mapping2  skos:prefLabel  ?ontoClassPrefLabel .
+	?mapping2  skos:related    ?ifcClassURI2 .
+	FILTER (STRSTARTS(STR(?ifcClassURI2), "https://identifier.buildingsmart.org/")) .
   }
   
-  OPTIONAL {
-    ?shape sh:targetClass ?ontoClassURI .
-    ?shape sh:property ?shapeProperty .
-    ?shapeProperty sh:path ?ontoPropertyURI .
-    ?ontoPropertyURI skos:prefLabel ?ontoPropertyPrefLabel .
-    OPTIONAL {
-      ?shapeProperty sh:datatype ?ontoPropertyDatatype .
-      BIND (STRAFTER(STR(?ontoPropertyDatatype), "#") AS ?ontoPropertyDatatypeLabel) .
-    }
+  # Retrieve all mapped elements. mappedClassRelation should be one of: HasMaterial, HasReference, IsEqualTo, IsSimilarTo, IsParentOf, IsChildOf, HasPart, IsPartOf
+  {
+	# IFC related mapping (HasReference)
+	FILTER (STRSTARTS(STR(?ontoClassURI), "https://otl.waternet.nl/def/")) .
+	?mapping  skos:prefLabel  ?ontoClassPrefLabel .
+	?mapping  skos:related    ?ifcClassURI .
+	  
+	# Replace ifc-4.3 in URI by ifc/4.3 (should be fixed in mapping ontology to make this step obsolete)
+	BIND (STRAFTER(STR(?ifcClassURI), "class/") AS ?ifcClassLabel) .
+	FILTER (BOUND(?ifcClassLabel) && ?ifcClassLabel !="")
+	BIND (URI(CONCAT("https://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/",?ifcClassLabel)) AS ?mappedClassURI) .
+	
+	BIND ("HasReference" AS ?mappedClassRelation) .
+  } UNION {
+	# Retrieve W-OTL specializations (IsChildOf)
+	?ontoClassURI rdfs:subClassOf ?mappedClassURI .
+	FILTER (STRSTARTS(STR(?mappedClassURI), "https://otl.waternet.nl/def/")) .
+	BIND ("IsChildOf" AS ?mappedClassRelation) .
+  } UNION {
+	# Retrieve W-OTL generalizations (IsParentOf)
+	?mappedClassURI rdfs:subClassOf ?ontoClassURI .
+	FILTER (STRSTARTS(STR(?mappedClassURI), "https://otl.waternet.nl/def/")) .
+	BIND ("IsParentOf" AS ?mappedClassRelation) .
+  } UNION {
+	# Retrieve W-OTL assemblies (IsPartOf)
+	?mappedClassURI sh:property ?hasPartShapeProperty .
+	?hasPartShapeProperty sh:path nen2660:hasPart .
+	?hasPartShapeProperty sh:qualifiedValueShape/sh:class ?ontoClassURI .
+	BIND ("IsPartOf" AS ?mappedClassRelation) .
+  } UNION {
+	# Retrieve W-OTL parts (HasPart)
+	?ontoClassURI sh:property ?hasPartShapeProperty .
+	?hasPartShapeProperty sh:path nen2660:hasPart .
+	?hasPartShapeProperty sh:qualifiedValueShape/sh:class ?mappedClassURI .
+	BIND ("HasPart" AS ?mappedClassRelation) .
+  } UNION {
+	# Retrieve W-OTL properties
+	OPTIONAL {
+		?ontoClassURI sh:property ?shapeProperty .
+		?shapeProperty sh:path ?ontoPropertyURI .
+		?ontoPropertyURI skos:prefLabel ?ontoPropertyPrefLabel .
+		OPTIONAL {
+		  ?datatypeShapeProperty sh:path ?ontoPropertyURI .
+		  ?datatypeShapeProperty sh:datatype ?ontoPropertyDatatype .
+		  BIND (STRAFTER(STR(?ontoPropertyDatatype), "#") AS ?ontoPropertyDatatypeLabel) .
+		}
+	}
   }
 }
+ORDER BY ?ontoClassPrefLabel ?mappedClassRelation
