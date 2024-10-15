@@ -119,13 +119,14 @@ class Onto2bsdd {
         resultClassificationObject.ClassProperties.push(classProperty);
       }
 
-      // Only add class relations if the related class is in the bSDD namespace
+      // Delete the "//" 5 lines below if:
+	  //Only add class relations if the related class is in the bSDD namespace
       // because we don't know the URI of the related class on bSDD
       // if we do have that information we can also add the OwnedUri property
       if (
-        Onto2bsdd.isInBsddNamespace(csvObject.mappedClassURI) &&
+//        Onto2bsdd.isInBsddNamespace(csvObject.mappedClassURI) &&
         csvObject.mappedClassRelation
-      ) {
+    ) {
         const classRelation = {
           RelationType: csvObject.mappedClassRelation,
           RelatedClassUri: csvObject.mappedClassURI,
